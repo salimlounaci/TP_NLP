@@ -1,0 +1,33 @@
+# Machine Learning Industrialization
+
+## TD1: Industrialization de la pipeline data
+
+Nous allons créer un data pipeline industrialisée. <br/>
+Nous travaillons pour un vendeur de légumes, qui récupère les ventes hebdomadaires par une source externe. Nous nous intéressons, pour notre modèle, aux ventes mensuelles.
+
+Nous allons créer une API avec les entry points:
+- /post_sales/: reçoit une request POST avec data: une liste de dictionnaire {"date": ..., "vegetable": ...., "kilo_sold": ....} <br/>
+Cette entrée est idempotente. On stockera ces données dans la table bronze
+- /get_raw_sales/: renvoie les données brutes que nous avons reçues
+- /get_monthly_sales/: renvoie les données cleanées (nom du légume standardisé. Cet entry point a l'option "remove_outliers". Si "remove_outliers=False", entraîne le modèle sur toutes les données. Si "remove_outliers=True", entraîne sur le modèle sur les données safe, qui n'ont pas été tagguées comme "unsafe" par nos algorithmes d'outlier detection.
+
+Je fournis le code app.py, une app Flask basique avec les entry points /post_sales/, /get_raw_sales/ et /get_monthly_sales/. <br/>
+Je fournis aussi le code client.py, qui va ping chacun des entry points. <br/>
+Enfin, je fournis un CSV avec des ventes weekly de 2020 à 2023.
+
+- Créer le code pour "post_sales" qui va stocker les données dans un CSV, est idempotent.
+- Créer le code pour "get_raw_sales" qui retourne les données ingérées.
+- Créer le code pour "compute_monthly_sales" qui prend des ventes weekly et les transforme en vente monthly. <br/>
+Pour une semaine avec n jours sur un mois et 7-n jours sur le mois suivant, on considère que (n / 7)% des ventes étaient sur le mois précédent et ((7 - n) / 7)% sont sur le mois suivant.<br/>
+Il est **fortement** suggéré de créer le test unitaire avec les cas problématiques (donnée en entrée, ce qu'on attend en sortie).
+- Créer le code "tag_outlier" qui ajoute is_outlier=True si la vente est supérieure à la moyenne plus 5 fois l'écart-type. <br/>
+Faut-il prendre moyenne globale ou légume par légume ? Pourquoi ?
+- Créer la pipeline qui reçoit les données dans "post_sales", les écrit dans la table bronze, les transforme en monthly sales, avec le tag is_outlier True ou False, les écrit dans la table gold.
+- Créer le code "/get_monthly_sales/" qui retourne les données gold, avec ou sans outliers
+- Changer le modèle pour ne plus écrire dans un CSV, mais dans une table SQL Lite.<br/>
+Si vous avez bien travaillé, le changement isolé et n'impacte pas les entry points ni la pipeline.<br/>
+Si non, qu'auriez-vous dû changer dans votre implémentation pour pouvoir facilement changer de base de données ?
+- Ajouter un entry point "/create_tables/" pour créer la database SQL Lite, les schemas et tables. <br/>
+
+Je testerai votre code en le faisant tourner dans un container, en appelant post_sales et les différents get_sales sur mes données. <br/>
+Si vous êtes allés jusqu'au tables SQL, j'utiliserai "/create_tables/" pour créer la base SQL lite
