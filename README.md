@@ -43,3 +43,4 @@ Je testerai votre pipeline en la faisant tourner dans un Docker. Votre pipeline 
 
 **A rendre**: le code, avec un fichier app_csv.py où l'app fonctionne en enregistrant les données sur des CSV et app_sql.py où l'app enregistre sur une base de données sql lite<br/>
 **Code à rendre à la fin du cour** (à 13h pour les IABD2, 17h15 pour les IABD1)
+Envoyer à foucheta@gmail.com avec l'objet "[ESGI][ML_INDUS]TP1"
