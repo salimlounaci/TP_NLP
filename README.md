@@ -13,7 +13,7 @@ Cette entrée est idempotente. On stockera ces données dans la table bronze
 
 Je fournis le code app.py, une app Flask basique avec les entry points /post_sales/, /get_raw_sales/ et /get_monthly_sales/. <br/>
 Je fournis aussi le code client.py, qui va ping chacun des entry points. <br/>
-Enfin, je fournis un CSV avec des ventes weekly de 2020 à 2023.
+Enfin, je fournis [un CSV sur ce lien](https://drive.google.com/file/d/1XvMB1SC1owgQXoFtBlRwpvovxuUFDO89/view?usp=sharing) avec des ventes weekly de 2020 à 2023. Les noms des légumes peuvent être en anglais, français ou espagnol. Dans la base cleaned, ils doivent être en anglais.
 
 - Créer le code pour "post_sales" qui va stocker les données dans un CSV, est idempotent.
 - Créer le code pour "get_raw_sales" qui retourne les données ingérées.
@@ -27,7 +27,19 @@ Faut-il prendre moyenne globale ou légume par légume ? Pourquoi ?
 - Changer le modèle pour ne plus écrire dans un CSV, mais dans une table SQL Lite.<br/>
 Si vous avez bien travaillé, le changement isolé et n'impacte pas les entry points ni la pipeline.<br/>
 Si non, qu'auriez-vous dû changer dans votre implémentation pour pouvoir facilement changer de base de données ?
-- Ajouter un entry point "/create_tables/" pour créer la database SQL Lite, les schemas et tables. <br/>
+- Ajouter un entry point "/init_database" pour créer la database ou la vider. <br/>
+- Utiliser le package "locust" pour faire un test de charge sur votre API.
 
 Je testerai votre code en le faisant tourner dans un container, en appelant post_sales et les différents get_sales sur mes données. <br/>
-Si vous êtes allés jusqu'au tables SQL, j'utiliserai "/create_tables/" pour créer la base SQL lite
+Si vous êtes allés jusqu'au tables SQL, j'utiliserai "/init_database" pour ré-initialiser la base quand j'en aurais besoin.
+
+Je testerai votre pipeline en la faisant tourner dans un Docker. Votre pipeline doit supporter:
+- Ne pas inscrire des données où des champs sont faux (pas de brand_quality)
+- post_data est bien idempotent pour une (year_month,vegetable)
+- Inscrire toutes les données valables d'une liste. Si la liste contient des données "A: valide", "B: valide", "C: non valide", "D: valide", je dois retrouver dans la base les données A, B, et D.
+- Tagger comme "outlier" les ventes à 5 écart-types de leur référence.
+- Votre API doit supporter 1000 requêtes par seconde (500 post, 250 get_raw_data, 250 get_monthly_data).
+- Vos tests d'intégration doivent couvrir les cas mentionnés ici.
+
+**A rendre**: le code, avec un fichier app_csv.py où l'app fonctionne en enregistrant les données sur des CSV et app_sql.py où l'app enregistre sur une base de données sql lite<br/>
+**Code à rendre à la fin du cour** (à 13h pour les IABD2, 17h15 pour les IABD1)
