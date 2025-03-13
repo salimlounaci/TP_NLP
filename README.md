@@ -13,7 +13,7 @@ Cette entrée est idempotente. On stockera ces données dans la table bronze
 
 Je fournis le code app.py, une app Flask basique avec les entry points /post_sales/, /get_raw_sales/ et /get_monthly_sales/. <br/>
 Je fournis aussi le code client.py, qui va ping chacun des entry points. <br/>
-Enfin, je fournis [un CSV sur ce lien](https://drive.google.com/file/d/1XvMB1SC1owgQXoFtBlRwpvovxuUFDO89/view?usp=sharing) avec des ventes weekly de 2020 à 2023. Les noms des légumes peuvent être en anglais, français ou espagnol. Il peut y avoir une faute d'orthographe. Dans la base cleaned, ils doivent être en anglais, sans faute d'orthographe.
+Enfin, je fournis [un CSV sur ce lien](https://drive.google.com/file/d/1WJPZQEijYsfTga6il8Ls3pgjdsGhCrq0/view?usp=sharing) avec des ventes weekly de 2020 à 2023. Les noms des légumes peuvent être en anglais, français ou espagnol. Il peut y avoir une faute d'orthographe. Dans la base cleaned, ils doivent être en anglais, sans faute d'orthographe.
 
 - Créer le code pour "post_sales" qui va stocker les données dans un CSV, est idempotent.
 - Créer le code pour "get_raw_sales" qui retourne les données ingérées.
