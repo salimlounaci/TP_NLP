@@ -34,7 +34,7 @@ Je testerai votre code en le faisant tourner dans un container, en appelant post
 Si vous êtes allés jusqu'au tables SQL, j'utiliserai "/init_database" pour ré-initialiser la base quand j'en aurais besoin.
 
 Je testerai votre pipeline en la faisant tourner dans un Docker. Votre pipeline doit supporter:
-- Ne pas inscrire des données où des champs sont faux (pas de brand_quality)
+- Ne pas inscrire des données où des champs sont faux (pas de vegetable)
 - post_sales est bien idempotent pour une (year_month,vegetable)
 - Inscrire toutes les données valables d'une liste. Si la liste contient des données "A: valide", "B: valide", "C: non valide", "D: valide", je dois retrouver dans la base les données A, B, et D.
 - Tagger comme "outlier" les ventes à 5 écart-types de leur référence.
