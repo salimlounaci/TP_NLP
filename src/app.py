@@ -14,8 +14,8 @@ def create_app(config=None):
 
     app.config.update(config)
 
-    @app.route('/post_data', methods=['POST'])
-    def post_data():
+    @app.route('/post_sales', methods=['POST'])
+    def post_sales():
         data = request.json
         df_new = pd.DataFrame(data)
 

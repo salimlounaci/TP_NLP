@@ -19,10 +19,10 @@ def app():
     os.remove(temp_csv.name)
 
 
-def test_post_data(app):
+def test_post_sales(app):
     with app.test_client() as client:
         response = client.post(
-            "post_data",
+            "post_sales",
             json=[{"year_week": 202001, "vegetable": "tomato", "sales": 100}],
         )
 
