@@ -81,3 +81,44 @@ Les mois où il y a eu des dépenses marketing, cela a impacté les ventes.
 Les données ont été générées ainsi
 
 $$ sales(M) = ...past\, model... * (1 + marketing\_spend * d) $$
+
+4) Ajouter les données de prix
+
+Les clients, des grossistes, sont prévenus en avance d'un changement de prix. <br/>
+Si le prix va augmenter le mois suivant M+1, ils commandent plus que d'habitude au mois M, et moins au mois M+1. <br/<
+A l'inverse, si le prix va baisser, ils commandent moins au mois M et plus à M+1.
+
+5) Ajouter les données de stock
+
+Certains mois, l'industriel a eu des ruptures de stocks et donc a vendu moins que ce qu'il aurait pu. Le mois suivant, il a plus vendu car les clients ont racheté ce qu'ils devaient pour leur consommation. <br/>
+
+stock.csv contient les "refill" de stock quotidien. On suppose que le stock initial était 0. <br/>
+Il y a rupture de stock si le stock est 0 à la fin du mois. <br/>
+En ayant identifié les ruptures de stock, vous pouvez décider de ne pas entraîner sur les mois où les ruptures de stocks ont eu un effet (le mois de la rupture et le mois suivant). <br/>
+
+On sait en avance les refill de stocks qu'on aura. <br/>
+Donc, on peut améliorer nos prédictions de cette façon:
+
+$$ pred\_processed(item_i, month_M) = \min(stock(item_i, month_M), pred(item_i, month_M)) $$
+
+6) Ajouter les objectifs des commerciaux.
+
+Les commerciaux ont des objectifs de vente à l'année. L'année fiscal se terminant en juin, c'est ce mois, et le mois suivant, qui sont impactés. <br/>
+Si l'item a déjà fait son objectif, où est loin de le faire (resterait 20% des ventes à faire), il n'y a pas d'impact. <br/>
+Sinon, l'équipe commercial va faire tout son possible pour arriver à l'objectif, demandant à leurs clients de sur-acheter en juin. Du coup, il y a un sous-achat en juillet compensant la sur-vente de juin.
+
+Intégrer les données des objectifs à votre pipeline de prédiction.
+
+7) Faire un modèle custom
+
+La génération des données a été faite ainsi. J'ai généré des données autoregressées ainsi:
+
+$$sales\_v1(M) = a * sales(M-12) + b * sales(M-1:M-12) / 12 + c * sales(M-12) \frac{sales(M-1:M-3)}{sales(M-13:M-15)}$$
+
+Ca fait, j'ai rajouté les effets:
+
+$$ sales\_v2(M)  = sales\_v1(M) * (1 + d * marketing ) * (1 + e * price\_change) $$
+
+J'ai ensuite ajouté, au hasard sur certains mois, des contraintes "objectifs commerciaux", puis des contraintes de stock.
+
+Vous pouvez faire votre propre modèle qui reprend ces équations, avec les paramètres a, b, c....,e, et utilser scipy.optimize pour trouver les paramètres idéaux.
