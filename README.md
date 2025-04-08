@@ -81,7 +81,7 @@ Les mois où il y a eu des dépenses marketing, cela a impacté les ventes.
 
 Les données ont été générées ainsi
 
-$$ sales(M) = ...past\, model... * (1 + marketing\_spend * d) $$
+$$ sales(M) = ...past model... * (1 + marketing * d) $$
 
 ### 4: Ajouter les données de prix
 
@@ -100,7 +100,7 @@ En ayant identifié les ruptures de stock, vous pouvez décider de ne pas entra�
 On sait en avance les refill de stocks qu'on aura. <br/>
 Donc, on peut améliorer nos prédictions de cette façon:
 
-$$ pred\_processed(item_i, month_M) = \min(stock(item_i, month_M), pred(item_i, month_M)) $$
+$$ \tilde{pred}(item_i, month_M) = \min(stock(item_i, month_M), pred(item_i, month_M)) $$
 
 ### 6: Ajouter les objectifs des commerciaux.
 
