@@ -16,7 +16,7 @@ def create_app(config):
     DB.init_app(app)
 
     with app.app_context():
-        from models import SaleWeeklyRaw
+        from api.models import SaleWeeklyRaw
         DB.create_all()
 
     @app.route('/post_sales', methods=['POST'])

@@ -1,4 +1,4 @@
-from app_sql import DB
+from api.app_sql import DB
 
 class SaleWeeklyRaw(DB.Model):
     id = DB.Column(DB.Integer, primary_key=True)
