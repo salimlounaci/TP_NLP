@@ -52,6 +52,7 @@ Nous voulons faire du code industrialisé, où nous pouvons itérer rapidement. 
 Il est fortement conseillé:
 - De faire les étapes une par une, de "jouer le jeu" d'un projet qui évolue au cour du temps
 - Pour chaque étape, de coder une solution, puis voir les refactos intéressantes. Attention: une erreur serait de se perdre en cherchant la perfection. 
+- De coder des tests unitaires pour toutes les transformations de données "un poil" complexes
 - De faire du code modulaire, avec:
   - Un module téléchargeant les données (un data catalogue)
   - Un module construisant les features. Chaque "feature" a son module
