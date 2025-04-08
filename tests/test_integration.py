@@ -3,7 +3,7 @@ import pandas as pd
 import pytest
 import tempfile
 
-from app import create_app
+from api.app import create_app
 
 @pytest.fixture
 def app():

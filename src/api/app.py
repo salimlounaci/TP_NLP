@@ -3,7 +3,7 @@ import pandas as pd
 from pathlib import Path
 import os
 
-from data import clean_vegetable_name, compute_monthly_sales, tag_outliers
+from api.data import clean_vegetable_name, compute_monthly_sales, tag_outliers
 
 PATH_CSV = "data/raw/db.csv"
 

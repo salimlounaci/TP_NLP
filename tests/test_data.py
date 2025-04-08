@@ -1,6 +1,6 @@
 import pandas as pd
 
-from data import compute_monthly_sales, tag_outliers
+from api.data import compute_monthly_sales, tag_outliers
 
 def test_compute_monthly_sales():
     df = pd.DataFrame(
