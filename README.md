@@ -70,7 +70,7 @@ Il s'agît de ventes mensuelles d'une industrie fictive.
 ### 2: Coder un modèle auto-regressif.
 Les données ont été générées comme une combinaison des ventes le même mois l'année dernière, des ventes moyennes sur l'année dernière, et des ventes du même mois l'année dernière fois la croissance du quarter Q-5 au quarter Q-1
 
-$$sales(M) = a * sales(M-12) + b * sales(M-1:M-12) / 12 + c * sales(M-12) \frac{sales(M-1:M-3)}{sales(M-13:M-15)}$$
+$$sales(M) = a \times sales(M-12) + b \times sales(M-1:M-12) / 12 \\ + c \times sales(M-12) \frac{sales(M-1:M-3)}{sales(M-13:M-15)}$$
 
 Coder le "build_feature" qui va générer ces différentes features autoregressive. <br/>
 Utiliser le modèle sklearn Ridge()
