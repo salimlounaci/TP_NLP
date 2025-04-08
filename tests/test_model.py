@@ -14,14 +14,14 @@ def test_model_prev_month():
         "model": "PrevMonthSale",
     }
 
-    prediction = main.predict_next_month(config)
+    prediction = main.make_predictions(config)
 
     df_expected = pd.read_csv("data/raw/prediction_prev_month.csv")
 
     pd.testing.assert_frame_equal(df_expected, prediction)
 
 
-def tst_model_same_month_last_year():
+def test_model_same_month_last_year():
     config = {
         "data": {
             "sales": "data/raw/sales.csv",
@@ -30,7 +30,7 @@ def tst_model_same_month_last_year():
         "model": "SameMonthLastYearSales",
     }
 
-    df_pred = main.predict_next_month(config)
+    df_pred = main.make_predictions(config)
 
     df_expected = pd.read_csv("data/raw/prediction_same_month_last_year.csv")
 
@@ -47,7 +47,7 @@ def test_autoregressive_model():
         "features": ["past_sales"],
     }
 
-    df_pred = main.predict_next_month(config)
+    df_pred = main.make_predictions(config)
 
     df_true = pd.read_csv("data/raw/sales_to_predict.csv")
 
@@ -66,7 +66,7 @@ def test_marketing_model():
         "features": ["past_sales", "marketing"],
     }
 
-    df_pred = main.predict_next_month(config)
+    df_pred = main.make_predictions(config)
 
     df_true = pd.read_csv("data/raw/sales_to_predict.csv")
 
@@ -86,7 +86,7 @@ def test_price_model():
         "features": ["past_sales", "marketing", "price"],
     }
 
-    df_pred = main.predict_next_month(config)
+    df_pred = main.make_predictions(config)
 
     df_true = pd.read_csv("data/raw/sales_to_predict.csv")
 
@@ -108,7 +108,7 @@ def test_stock_model():
         "features": ["past_sales", "marketing", "price", "stock"],
     }
 
-    df_pred = main.predict_next_month(config)
+    df_pred = main.make_predictions(config)
 
     df_true = pd.read_csv("data/raw/sales_to_predict.csv")
 
@@ -131,7 +131,7 @@ def test_model_with_objectives():
         "features": ["past_sales", "marketing", "price", "stock", "objectives"],
     }
 
-    df_pred = main.predict_next_month(config)
+    df_pred = main.make_predictions(config)
 
     df_true = pd.read_csv("data/raw/sales_to_predict.csv")
 
@@ -153,7 +153,7 @@ def test_custom_model():
         "features": ["past_sales", "marketing", "price", "stock", "objectives"],
     }
 
-    df_pred = main.predict_next_month(config)
+    df_pred = main.make_predictions(config)
 
     df_true = pd.read_csv("data/raw/sales_to_predict.csv")
 

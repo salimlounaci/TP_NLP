@@ -1,6 +1,6 @@
 import pandas as pd
 
-def predict_next_month(config):
+def make_predictions(config):
     df_sales = pd.read_csv(config["data"]["sales"])
 
     df_sales["prediction"] = df_sales.groupby("item_id")["sales"].shift(1)
