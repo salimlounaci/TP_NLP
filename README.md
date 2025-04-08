@@ -65,9 +65,9 @@ Les tests appellent, dans main.py, la fonction "make_predictions(config: dict) -
 Télécharger [le dataset](https://drive.google.com/file/d/1OFDGVqlmx-5-hE3Bnn-996LGpumScwOV/view?usp=sharing). <br/>
 Il s'agît de ventes mensuelles d'une industrie fictive.
 
-1) Coder un modèle "SameMonthLastYearSales", predisant, pour les ventes de item N pour un mois, les mêmes ventes qu'il a faites l'année dernière au même mois (pour août 2024 les mêmes ventes que l'item N a eu en août 2023)
+### 1: Coder un modèle "SameMonthLastYearSales", predisant, pour les ventes de item N pour un mois, les mêmes ventes qu'il a faites l'année dernière au même mois (pour août 2024 les mêmes ventes que l'item N a eu en août 2023)
 
-2) Coder un modèle auto-regressif.
+### 2: Coder un modèle auto-regressif.
 Les données ont été générées comme une combinaison des ventes le même mois l'année dernière, des ventes moyennes sur l'année dernière, et des ventes du même mois l'année dernière fois la croissance du quarter Q-5 au quarter Q-1
 
 $$sales(M) = a * sales(M-12) + b * sales(M-1:M-12) / 12 + c * sales(M-12) \frac{sales(M-1:M-3)}{sales(M-13:M-15)}$$
@@ -75,7 +75,7 @@ $$sales(M) = a * sales(M-12) + b * sales(M-1:M-12) / 12 + c * sales(M-12) \frac{
 Coder le "build_feature" qui va générer ces différentes features autoregressive. <br/>
 Utiliser le modèle sklearn Ridge()
 
-3) Ajouter les données marketing.
+### 3: Ajouter les données marketing.
 
 Les mois où il y a eu des dépenses marketing, cela a impacté les ventes.
 
@@ -83,13 +83,13 @@ Les données ont été générées ainsi
 
 $$ sales(M) = ...past\, model... * (1 + marketing\_spend * d) $$
 
-4) Ajouter les données de prix
+### 4: Ajouter les données de prix
 
 Les clients, des grossistes, sont prévenus en avance d'un changement de prix. <br/>
 Si le prix va augmenter le mois suivant M+1, ils commandent plus que d'habitude au mois M, et moins au mois M+1. <br/<
 A l'inverse, si le prix va baisser, ils commandent moins au mois M et plus à M+1.
 
-5) Ajouter les données de stock
+### 5: Ajouter les données de stock
 
 Certains mois, l'industriel a eu des ruptures de stocks et donc a vendu moins que ce qu'il aurait pu. Le mois suivant, il a plus vendu car les clients ont racheté ce qu'ils devaient pour leur consommation. <br/>
 
@@ -102,7 +102,7 @@ Donc, on peut améliorer nos prédictions de cette façon:
 
 $$ pred\_processed(item_i, month_M) = \min(stock(item_i, month_M), pred(item_i, month_M)) $$
 
-6) Ajouter les objectifs des commerciaux.
+### 6: Ajouter les objectifs des commerciaux.
 
 Les commerciaux ont des objectifs de vente à l'année. L'année fiscal se terminant en juin, c'est ce mois, et le mois suivant, qui sont impactés. <br/>
 Si l'item a déjà fait son objectif, où est loin de le faire (resterait 20% des ventes à faire), il n'y a pas d'impact. <br/>
@@ -110,7 +110,7 @@ Sinon, l'équipe commercial va faire tout son possible pour arriver à l'objecti
 
 Intégrer les données des objectifs à votre pipeline de prédiction.
 
-7) Faire un modèle custom
+### 7: Faire un modèle custom
 
 La génération des données a été faite ainsi. J'ai généré des données autoregressées ainsi:
 
