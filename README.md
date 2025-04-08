@@ -44,3 +44,40 @@ Je testerai votre pipeline en la faisant tourner dans un Docker. Votre pipeline 
 **A rendre**: le code, avec un fichier app_csv.py où l'app fonctionne en enregistrant les données sur des CSV et app_sql.py où l'app enregistre sur une base de données sql lite<br/>
 **Code à rendre à la fin du cour** (à 13h pour les IABD2, 17h15 pour les IABD1)
 Envoyer à foucheta@gmail.com avec l'objet "[ESGI][ML_INDUS]TP1"
+
+## TD2: Iteration sur un modèle
+
+Dans ce TD, nous allons voir un problème d'apprentissage supervisé, sur lequel on va rajouter des sources de données et des features au fur et à mesure. <br/>
+Nous voulons faire du code industrialisé, où nous pouvons itérer rapidement. <br/>
+Il est fortement conseillé:
+- De faire les étapes une par une, de "jouer le jeu" d'un projet qui évolue au cour du temps
+- Pour chaque étape, de coder une solution, puis voir les refactos intéressantes. Attention: une erreur serait de se perdre en cherchant la perfection. 
+- De faire du code modulaire, avec:
+  - Un module téléchargeant les données (un data catalogue)
+  - Un module construisant les features. Chaque "feature" a son module
+  - Un module générant le model. Tous les modèles ont les méthodes ".fit(X, y)", ".predict"
+
+Vous avez le fichier de test tests/test_model.py avec les tests que je ferai. <br/>
+Les tests appellent, dans main.py, la fonction "make_predictions(config: dict) -> df_pred: pd.Dataframe"
+
+
+Télécharger [le dataset](https://drive.google.com/file/d/1OFDGVqlmx-5-hE3Bnn-996LGpumScwOV/view?usp=sharing). <br/>
+Il s'agît de ventes mensuelles d'une industrie fictive.
+
+1) Coder un modèle "SameMonthLastYearSales", predisant, pour les ventes de item N pour un mois, les mêmes ventes qu'il a faites l'année dernière au même mois (pour août 2024 les mêmes ventes que l'item N a eu en août 2023)
+
+2) Coder un modèle auto-regressif.
+Les données ont été générées comme une combinaison des ventes le même mois l'année dernière, des ventes moyennes sur l'année dernière, et des ventes du même mois l'année dernière fois la croissance du quarter Q-5 au quarter Q-1
+
+$$sales(M) = a * sales(M-12) + b * sales(M-1:M-12) / 12 + c * sales(M-12) \frac{sales(M-1:M-3)}{sales(M-13:M-15)}$$
+
+Coder le "build_feature" qui va générer ces différentes features autoregressive. <br/>
+Utiliser le modèle sklearn Ridge()
+
+3) Ajouter les données marketing.
+
+Les mois où il y a eu des dépenses marketing, cela a impacté les ventes.
+
+Les données ont été générées ainsi
+
+$$ sales(M) = ...past\, model... * (1 + marketing\_spend * d) $$
