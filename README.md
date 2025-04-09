@@ -123,3 +123,7 @@ $$ sales\_v2(M)  = sales\_v1(M) * (1 + d * marketing ) * (1 + e * price\_change)
 J'ai ensuite ajouté, au hasard sur certains mois, des contraintes "objectifs commerciaux", puis des contraintes de stock.
 
 Vous pouvez faire votre propre modèle qui reprend ces équations, avec les paramètres a, b, c....,e, et utilser scipy.optimize pour trouver les paramètres idéaux.
+
+Side note: les "items" ont des ventes moyennes différentes. <br/>
+Sans scaling, votre modèle "fit" surtout le top1 item ou top10 item. <br/>
+Peut-être qu'un scaling permettra de mieux estimer les paramètres a, b, c...
