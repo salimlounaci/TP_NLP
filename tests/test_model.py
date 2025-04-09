@@ -21,7 +21,7 @@ def test_model_prev_month():
     df_pred = sort_dataframe(df_pred)
     df_expected = sort_dataframe(df_expected)
 
-    pd.testing.assert_frame_equal(df_expected, prediction)
+    pd.testing.assert_frame_equal(df_expected, df_pred)
 
 
 def test_model_same_month_last_year():
