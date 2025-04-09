@@ -65,7 +65,9 @@ Les tests appellent, dans main.py, la fonction "make_predictions(config: dict) -
 Télécharger [le dataset](https://drive.google.com/file/d/1OFDGVqlmx-5-hE3Bnn-996LGpumScwOV/view?usp=sharing). <br/>
 Il s'agît de ventes mensuelles d'une industrie fictive.
 
-### 1: Coder un modèle "SameMonthLastYearSales", predisant, pour les ventes de item N pour un mois, les mêmes ventes qu'il a faites l'année dernière au même mois (pour août 2024 les mêmes ventes que l'item N a eu en août 2023)
+### 1: Coder un modèle "SameMonthLastYearSales"
+
+Le modèle prédit, pour les ventes de item N pour un mois, les mêmes ventes qu'il a faites l'année dernière au même mois (pour août 2024 les mêmes ventes que l'item N a eu en août 2023)
 
 ### 2: Coder un modèle auto-regressif.
 Les données ont été générées comme une combinaison des ventes le même mois l'année dernière, des ventes moyennes sur l'année dernière, et des ventes du même mois l'année dernière fois la croissance du quarter Q-5 au quarter Q-1
