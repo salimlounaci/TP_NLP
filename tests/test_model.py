@@ -18,6 +18,9 @@ def test_model_prev_month():
 
     df_expected = pd.read_csv("data/raw/prediction_prev_month.csv")
 
+    df_pred = sort_dataframe(df_pred)
+    df_expected = sort_dataframe(df_expected)
+
     pd.testing.assert_frame_equal(df_expected, prediction)
 
 
@@ -33,6 +36,9 @@ def test_model_same_month_last_year():
     df_pred = main.make_predictions(config)
 
     df_expected = pd.read_csv("data/raw/prediction_same_month_last_year.csv")
+
+    df_pred = sort_dataframe(df_pred)
+    df_expected = sort_dataframe(df_expected)
 
     pd.testing.assert_frame_equal(df_expected, df_pred)
     
@@ -51,8 +57,11 @@ def test_autoregressive_model():
 
     df_true = pd.read_csv("data/raw/sales_to_predict.csv")
 
-    mse = r2_score(df_true["sales"], df_pred["prediction"])
-    assert mse == pytest.approx(0.8019,rel=1e-3)
+    df_pred = sort_dataframe(df_pred)
+    df_true = sort_dataframe(df_true)
+
+    r2 = r2_score(df_true["sales"], df_pred["prediction"])
+    assert r2 == pytest.approx(0.8019,rel=1e-3)
 
 
 def test_marketing_model():
@@ -70,8 +79,11 @@ def test_marketing_model():
 
     df_true = pd.read_csv("data/raw/sales_to_predict.csv")
 
-    mse = r2_score(df_true["sales"], df_pred["prediction"])
-    assert mse == pytest.approx(0.8019,rel=1e-3)
+    df_pred = sort_dataframe(df_pred)
+    df_true = sort_dataframe(df_true)
+
+    r2 = r2_score(df_true["sales"], df_pred["prediction"])
+    assert r2 == pytest.approx(0.8019,rel=1e-3)
 
 
 def test_price_model():
@@ -90,9 +102,12 @@ def test_price_model():
 
     df_true = pd.read_csv("data/raw/sales_to_predict.csv")
 
-    mse = r2_score(df_true["sales"], df_pred["prediction"])
+    df_pred = sort_dataframe(df_pred)
+    df_true = sort_dataframe(df_true)
 
-    assert mse == pytest.approx(0.8446,rel=1e-3)
+    r2 = r2_score(df_true["sales"], df_pred["prediction"])
+
+    assert r2 == pytest.approx(0.8446,rel=1e-3)
 
 
 def test_stock_model():
@@ -112,9 +127,12 @@ def test_stock_model():
 
     df_true = pd.read_csv("data/raw/sales_to_predict.csv")
 
-    mse = r2_score(df_true["sales"], df_pred["prediction"])
+    df_pred = sort_dataframe(df_pred)
+    df_true = sort_dataframe(df_true)
 
-    assert mse == pytest.approx(0.8446,rel=1e-3)
+    r2 = r2_score(df_true["sales"], df_pred["prediction"])
+
+    assert r2 == pytest.approx(0.8446,rel=1e-3)
 
 
 def test_model_with_objectives():
@@ -135,9 +153,12 @@ def test_model_with_objectives():
 
     df_true = pd.read_csv("data/raw/sales_to_predict.csv")
 
-    mse = r2_score(df_true["sales"], df_pred["prediction"])
+    df_pred = sort_dataframe(df_pred)
+    df_true = sort_dataframe(df_true)
 
-    assert mse == pytest.approx(0.8446,rel=1e-3)
+    r2 = r2_score(df_true["sales"], df_pred["prediction"])
+
+    assert r2 == pytest.approx(0.8446,rel=1e-3)
 
 def test_custom_model():
     config = {
@@ -157,7 +178,17 @@ def test_custom_model():
 
     df_true = pd.read_csv("data/raw/sales_to_predict.csv")
 
-    mse = r2_score(df_true["sales"], df_pred["prediction"])
+    df_pred = sort_dataframe(df_pred)
+    df_true = sort_dataframe(df_true)
 
-    assert mse == pytest.approx(0.8446,rel=1e-3)
+    r2 = r2_score(df_true["sales"], df_pred["prediction"])
 
+    assert r2 == pytest.approx(0.8446,rel=1e-3)
+
+
+def sort_dataframe(df):
+    return (
+        df.astype({"dates": str})
+        .sort_values(["item_id", "dates"], ignore_index=True)
+        .reset_index(drop=True)
+    )
