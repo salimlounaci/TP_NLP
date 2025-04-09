@@ -14,7 +14,7 @@ def test_model_prev_month():
         "model": "PrevMonthSale",
     }
 
-    prediction = main.make_predictions(config)
+    df_pred = main.make_predictions(config)
 
     df_expected = pd.read_csv("data/raw/prediction_prev_month.csv")
 
