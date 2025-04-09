@@ -1,5 +1,5 @@
 import pandas as pd
-from sklearn.metrics import mean_squared_error
+from sklearn.metrics import r2_score
 import pytest
 
 import main
@@ -51,7 +51,7 @@ def test_autoregressive_model():
 
     df_true = pd.read_csv("data/raw/sales_to_predict.csv")
 
-    mse = mean_squared_error(df_true["sales"], df_pred["prediction"])
+    mse = r2_score(df_true["sales"], df_pred["prediction"])
     assert mse == pytest.approx(0.8019,rel=1e-3)
 
 
@@ -70,7 +70,7 @@ def test_marketing_model():
 
     df_true = pd.read_csv("data/raw/sales_to_predict.csv")
 
-    mse = mean_squared_error(df_true["sales"], df_pred["prediction"])
+    mse = r2_score(df_true["sales"], df_pred["prediction"])
     assert mse == pytest.approx(0.8019,rel=1e-3)
 
 
@@ -90,7 +90,7 @@ def test_price_model():
 
     df_true = pd.read_csv("data/raw/sales_to_predict.csv")
 
-    mse = mean_squared_error(df_true["sales"], df_pred["prediction"])
+    mse = r2_score(df_true["sales"], df_pred["prediction"])
 
     assert mse == pytest.approx(0.8446,rel=1e-3)
 
@@ -112,7 +112,7 @@ def test_stock_model():
 
     df_true = pd.read_csv("data/raw/sales_to_predict.csv")
 
-    mse = mean_squared_error(df_true["sales"], df_pred["prediction"])
+    mse = r2_score(df_true["sales"], df_pred["prediction"])
 
     assert mse == pytest.approx(0.8446,rel=1e-3)
 
@@ -135,7 +135,7 @@ def test_model_with_objectives():
 
     df_true = pd.read_csv("data/raw/sales_to_predict.csv")
 
-    mse = mean_squared_error(df_true["sales"], df_pred["prediction"])
+    mse = r2_score(df_true["sales"], df_pred["prediction"])
 
     assert mse == pytest.approx(0.8446,rel=1e-3)
 
@@ -157,7 +157,7 @@ def test_custom_model():
 
     df_true = pd.read_csv("data/raw/sales_to_predict.csv")
 
-    mse = mean_squared_error(df_true["sales"], df_pred["prediction"])
+    mse = r2_score(df_true["sales"], df_pred["prediction"])
 
     assert mse == pytest.approx(0.8446,rel=1e-3)
 
