@@ -129,3 +129,32 @@ Vous pouvez faire votre propre modèle qui reprend ces équations, avec les para
 Side note: les "items" ont des ventes moyennes différentes. <br/>
 Sans scaling, votre modèle "fit" surtout le top1 item ou top10 item. <br/>
 Peut-être qu'un scaling permettra de mieux estimer les paramètres a, b, c...
+
+## TD3: Logging & monitoring
+
+Dans ce TD, nous allons prendre une app, sans log ni monitoring, prédisant le sentiment d'un utilisateur selon sa review.<br/>
+Le but est d'ajouter des logs et du monitoring pour comprendre ce qui s'est mal passé. <br/>
+Nous n'allons pas installer une toolbox, juste essayer de poser du "logging.info/debug/error(...logging message...)". <br/>
+Si on joue le jeu, on essaie de lire, dans les logs (qui peuvent être écrit dans un fichier .log) ce qui a posé problème.
+
+Dans le dossier TD3, vous trouverez 2 fichiers: app.py et test_app.py.<br/>
+test_app va vraiment appeler l'API. <br/>
+Il faut
+```python run app.py```
+Pour rendre l'API disponible.<br/>
+Ensuite on peut lancer les tests.
+
+Dans ce TD, on va essayer de comprendre quels cas posent quels problèmes avec le logging et le monitoring. <br/>
+Pour l'instant, "test_app.py" ne lance que "test_normal_case", qui est sensé marcher. <br/>
+
+Essayez, sans découvrir les autres cas de tests, d'ajouter du logging sur app.py qui vous paraît normal:
+- Avoir le temps de réponse
+- Mesurer CPU / RAM / Memory (ici, on va juste mesurer "Memory". Regarder la fonction "health_check" pour voir ce que je considère comme "Memory"
+- Ajouter un ID à chaque requête, pour pouvoir tracer ce qui s'est passé
+- Avoir dans les logs les infos pour pouvoir rejouer le cas qui a échoué
+- Essayer de mesurer data drift (la différence entre les données d'entraînement et les données en prod)
+
+Une fois votre logging mis en place, vous pouvez débloquer les test cases du fichier "test_app.py" en transformant les noms de fonctions "def tst_case_xxx" en "def test_case_xxx".
+
+Livrable: A la fin du TD, envoyez-moi un document avec les problèmes qui étaient contenus dans cette app et, pour chaque problème, quel logging aurait permis de le découvrir. (si vous ne savez pas quel logging aurait aider, vous pouvez le mettre). <br/>
+(Ce document n'a pas besoin d'être très long.)
