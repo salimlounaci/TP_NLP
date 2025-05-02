@@ -2,14 +2,7 @@
 import requests
 import time
 import concurrent.futures as concurrent_futures
-import matplotlib.pyplot as plt
-import numpy as np
 import json
-import os
-
-# Create results directory
-if not os.path.exists('results'):
-    os.makedirs('results')
 
 BASE_URL = "http://localhost:5000"
 
@@ -136,10 +129,10 @@ def tst_case_6():
 
 def tst_case_7():
     texts = [
-        "Le meilleur objet que j'ai jamais acheté.",
-        "Depuis que j'ai le modèle AX412, je suis heureux",
+        "Le meilleur objet que j'ai jamais achete.",
+        "Depuis que j'ai le modele AX412, je suis heureux",
         "Je n'aime pas ce produit",
-        "Aussi dégueu que le café de l'ESGI",
+        "Aussi degueu que le cafe de l'ESGI",
     ]
     results = run_test_case("Normal Cases", texts)
 
