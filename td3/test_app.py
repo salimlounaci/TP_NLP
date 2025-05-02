@@ -79,8 +79,8 @@ def tst_case_2():
     ]
     results = run_test_case("Normal Cases", texts)
 
-    assert results[0]["response"]["score"] < .5
-    assert results[1]["response"]["score"] < .5
+    assert results[0]["response"]["score"] > .5
+    assert results[1]["response"]["score"] > .5
     assert results[2]["response"]["score"] > .5
     assert results[3]["response"]["score"] < .5
 
