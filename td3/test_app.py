@@ -58,7 +58,7 @@ def test_normal_cases():
 
     assert status_codes == [200] * len(texts)
 
-def tst_case_1():
+def test_case_1():
     texts = [
         "The product-A123B456 has really good battery life.",
         "I bought the model X100_Z200 and it's fantastic.",
@@ -123,7 +123,7 @@ def tst_case_5():
     response = requests.get(f"{BASE_URL}/health")
     res = response.json()
 
-    assert res["memory_usage"] < 5000
+    assert res["memory_usage"] < 1000
 
 def tst_case_6():
     texts = ["Short review number " + str(i) for i in range(20)]
@@ -145,10 +145,3 @@ def tst_case_7():
     assert results[1]["response"]["score"] > .5
     assert results[2]["response"]["score"] < .5
     assert results[3]["response"]["score"] < .5
-
-def tst_check_health():
-    """Check the health endpoint"""
-    response = requests.get(f"{BASE_URL}/health")
-    res = response.json()
-
-    assert res["memory_usage"] < 5000
