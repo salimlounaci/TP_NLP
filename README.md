@@ -140,7 +140,7 @@ Si on joue le jeu, on essaie de lire, dans les logs (qui peuvent être écrit da
 Dans le dossier TD3, vous trouverez 2 fichiers: app.py et test_app.py.<br/>
 test_app va vraiment appeler l'API. <br/>
 Il faut
-```python run app.py```
+```python app.py```
 Pour rendre l'API disponible.<br/>
 Ensuite on peut lancer les tests.
 
@@ -158,3 +158,98 @@ Une fois votre logging mis en place, vous pouvez débloquer les test cases du fi
 
 Livrable: A la fin du TD, envoyez-moi un document avec les problèmes qui étaient contenus dans cette app et, pour chaque problème, quel logging aurait permis de le découvrir. (si vous ne savez pas quel logging aurait aider, vous pouvez le mettre). <br/>
 (Ce document n'a pas besoin d'être très long.)
+
+## TD4: Refactoring dirty ML code
+
+Dans ce TD, nous allons supposer qu'un data scientist est arrivé à un bon modèle, sans se soucier des règles d'industrialisation. Nous allons refactor ce code pour qu'il soit testé et modulaire **avec méthode!**
+
+Voici [un zip avec des data](https://drive.google.com/file/d/1c6lRYoXXRQW9T4i1nKZC4H2qmd1CiYrE/view?usp=sharing)
+
+Le code à refactorer est dans td4/script.py
+
+### Contexte
+
+Nous travaillons dans une start-up d'adtech. Lorsqu'un utilisateur arrive sur une page, on nous envoie une requête d'enchère (bid) pour un "user" sur une "page". Nous devons envoyer une "ad" ainsi que le "bid" (combien nous sommes prêts à payer pour diffuser notre pub à cet utilisateur sur cette page).
+
+#### Data
+
+Nous disposons:
+- D'un historique des requêtes (user, page, timestamp) que nous avons reçu (bid_request.csv)
+- D'information sur les utilisateurs (user_data.csv)
+- Du text contenu dans les pages (page_data.csv)
+- Pour les enchères que nous avons remportées, nous savons si l'utilisateur a cliqué sur la pub ou non (click_data.csv)
+
+#### Modèle
+
+L'idée du data scientist, pour avoir un bon prédicteur, et d'essayer de clusteriser les pages et les utilisateurs. Il doit exister plusieurs catégories de pages (pages de sport, de news, de théâtre, de gossip...). En clusterisant les pages selon les utilisateurs qui les ont visitées, on doit retrouvé des centres d'intérêts.
+
+De même, on peut clusteriser les utilisateurs selon les pages qu'ils visitent.
+
+En plus, pour les pages, une fois clusterisées, il apprend une régression logistique (texte de la page) -> (probabilité d'appartenir à chacun des clusters).
+
+Nous entraînons ensuite une régression logistique sur les clicks data (user_id, page_id, ad_id, ad clicked or not) sur les features suivantes:
+- Le nombre de publicités que l'utilisateur a vu jusqu'ici
+- le cluster de l'utilisateur
+- la probabilité d'être dans chacun des clusters pour la page
+
+#### Problèmes du code
+
+- C'est un long script
+- On a des variables globales inscrites en dur
+- Les modèles sont dumpés en local dans des fichiers inscrits en dur.
+
+### Vos tâches
+
+#### End to end test
+
+Tout d'abord, on va s'assurer qu'on ne casse rien. Nous allons donc créer un end-to-end test runnant toute la pipeline, et le résultat ne doit pas changer.
+
+Créer un test qui aura cette structure là:
+
+```
+def test_end_to_end():
+    data_test = ...load_data_test...
+    result_expected = ...load_expected_result...
+    
+    train_model()
+    result = predict(data_test)
+
+    ...assert result == result_expected...
+```
+
+Pour créer "result expected", faites tourner la pipeline et dumper, dans des CSVs ou des pickles les outcomes que vous voulez comparer. <br/>
+Quels outcomes voulez-vous comparer ?<br/>
+A vous de déterminer. En tant que CTO de l'adtech, je veux **au moins** garder les mêmes predictions sur user_id, page_id, ad_id. On peut se dire qu'on sauvegarde des résultats intermédiaires (page_cluster_proba) mais notre seul vrai besoin, ce sont les prédictions (user_id, page_id, ad_id) -> probability to be clicked. <br/>
+Je préfère assert sur les données résultats (CSVs ou .parquet) que sur les .pickles (les modèles sont les moyens d'avoir le résultat. Ce ne sont pas eux qui m'intéressent).
+
+Vous pouvez refactorer "script.py" pour qu'il ait un entry point clair "train_model" et "predict(test_data)".
+
+Pour que le test d'intégration prenne peu de temps, vous pouvez créer un dataset_train de petite taille (et tous les calculs seront plus rapides).
+
+#### Modularité
+
+Maintenant que nous sommes assurés de ne rien casser, nous allons séparer le code en module:
+- Un module pour loader les données
+- Un module qui sort les user clusters
+- Un module qui sort les page clusters proba
+- Un module qui construit le dataframe pour notre prédicteur (user_id, page_id, ad_id) -> proba to be clicked
+
+#### Configuration
+
+Créer un système de configuration gérant:
+- Les chemins aux données
+- Les chemins aux modèles
+- Les variables paramètres
+
+#### Unit-test
+
+Une erreur s'est glissée dans le calcul d'une feature. <br/>
+Créer des tests unitaires pour vous assurer que chaque feature est bien calculée et trouvez l'erreur.
+
+Si vous trouvez cette partie compliquée et que vous vous demandez comment vous y prendre, c'est un bon moment pour demander de l'aide au professeur. <br/>
+Les tests sont un vaste sujet, mais ils sont cruciaux pour l'industrialisation de machine learning.
+
+### Livrable
+
+Envoyez-moi votre code zippé à foucheta@gmail.com, avec le sujet [ESGI][ML_INDUS] TD4.
+Envoyez moi aussi un **court** document expliquant ce que vous avez fait pour les parties "modularités", "configuration", "unit-test" (où était l'erreur)
