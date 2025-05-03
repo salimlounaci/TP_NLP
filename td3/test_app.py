@@ -127,7 +127,7 @@ def tst_case_5():
 
 def tst_case_6():
     texts = ["Short review number " + str(i) for i in range(20)]
-    results = run_test_case("Normal Cases", texts)
+    results = run_test_case("Normal Cases", texts, concurrent=True)
     status_codes = [r["status_code"] for r in results]
 
     assert status_codes == [200] * len(texts)
