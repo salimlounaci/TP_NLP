@@ -1,0 +1,1001 @@
+user_id,sex,city,device
+1,M,San Diego,Mobile
+2,M,Chicago,Mobile
+3,M,Phoenix,Desktop
+4,F,Philadelphia,Mobile
+5,F,Philadelphia,Mobile
+6,Unknown,New York,Mobile
+7,F,Dallas,Mobile
+8,F,San Jose,Mobile
+9,Unknown,Chicago,Mobile
+10,Unknown,Dallas,Mobile
+11,F,Phoenix,Mobile
+12,M,Dallas,Tablet
+13,F,Dallas,Mobile
+14,M,San Antonio,Desktop
+15,F,Chicago,Tablet
+16,M,San Diego,Desktop
+17,M,Philadelphia,Mobile
+18,M,Los Angeles,Desktop
+19,F,Houston,Mobile
+20,F,San Diego,Mobile
+21,F,San Diego,Desktop
+22,F,Phoenix,Mobile
+23,Unknown,Dallas,Mobile
+24,M,Dallas,Tablet
+25,F,San Diego,Mobile
+26,F,New York,Desktop
+27,F,Phoenix,Tablet
+28,F,San Antonio,Desktop
+29,M,New York,Mobile
+30,M,San Diego,Desktop
+31,F,Philadelphia,Desktop
+32,M,Phoenix,Tablet
+33,F,Phoenix,Mobile
+34,F,San Antonio,Mobile
+35,F,San Jose,Mobile
+36,M,San Antonio,Mobile
+37,F,Houston,Tablet
+38,M,Houston,Tablet
+39,F,Chicago,Mobile
+40,F,Dallas,Mobile
+41,M,Houston,Desktop
+42,F,San Jose,Mobile
+43,M,New York,Mobile
+44,F,Dallas,Desktop
+45,F,San Antonio,Mobile
+46,F,Phoenix,Desktop
+47,M,San Diego,Tablet
+48,M,San Diego,Desktop
+49,M,New York,Mobile
+50,M,San Antonio,Mobile
+51,M,New York,Tablet
+52,M,Los Angeles,Mobile
+53,M,Phoenix,Mobile
+54,F,Los Angeles,Mobile
+55,M,Philadelphia,Mobile
+56,F,San Diego,Mobile
+57,F,San Diego,Mobile
+58,Unknown,Philadelphia,Mobile
+59,M,New York,Mobile
+60,F,Chicago,Mobile
+61,F,Chicago,Desktop
+62,F,Houston,Desktop
+63,M,New York,Mobile
+64,F,San Diego,Mobile
+65,M,Dallas,Mobile
+66,F,San Jose,Mobile
+67,F,San Jose,Tablet
+68,F,New York,Mobile
+69,M,Phoenix,Tablet
+70,F,Dallas,Mobile
+71,F,Chicago,Desktop
+72,M,New York,Desktop
+73,M,San Diego,Desktop
+74,F,Chicago,Mobile
+75,F,Dallas,Mobile
+76,M,Los Angeles,Mobile
+77,M,Dallas,Mobile
+78,M,Phoenix,Mobile
+79,M,San Diego,Desktop
+80,F,New York,Mobile
+81,F,Philadelphia,Mobile
+82,M,Philadelphia,Tablet
+83,F,San Diego,Desktop
+84,F,New York,Mobile
+85,F,Phoenix,Mobile
+86,F,Houston,Mobile
+87,F,New York,Tablet
+88,M,Phoenix,Desktop
+89,F,Phoenix,Tablet
+90,M,Phoenix,Mobile
+91,Unknown,Houston,Mobile
+92,M,San Antonio,Mobile
+93,F,Los Angeles,Mobile
+94,F,San Jose,Tablet
+95,M,Los Angeles,Desktop
+96,Unknown,Los Angeles,Mobile
+97,M,San Jose,Desktop
+98,F,Philadelphia,Mobile
+99,M,San Antonio,Mobile
+100,M,San Diego,Tablet
+101,F,Dallas,Desktop
+102,M,San Diego,Desktop
+103,F,Chicago,Mobile
+104,M,Los Angeles,Mobile
+105,F,Chicago,Mobile
+106,F,Philadelphia,Mobile
+107,M,Houston,Mobile
+108,M,Phoenix,Mobile
+109,F,Phoenix,Mobile
+110,F,Houston,Mobile
+111,F,San Diego,Desktop
+112,Unknown,San Jose,Mobile
+113,F,Chicago,Mobile
+114,M,Phoenix,Mobile
+115,M,Dallas,Desktop
+116,M,San Jose,Mobile
+117,M,Philadelphia,Desktop
+118,F,Phoenix,Desktop
+119,F,Phoenix,Desktop
+120,M,San Jose,Mobile
+121,F,Dallas,Mobile
+122,M,New York,Mobile
+123,Unknown,Phoenix,Mobile
+124,M,Phoenix,Mobile
+125,M,Phoenix,Mobile
+126,F,Phoenix,Desktop
+127,M,San Jose,Desktop
+128,F,New York,Mobile
+129,F,San Diego,Tablet
+130,F,Houston,Mobile
+131,M,New York,Mobile
+132,F,Phoenix,Desktop
+133,F,San Diego,Tablet
+134,M,Los Angeles,Mobile
+135,F,San Antonio,Mobile
+136,M,San Jose,Desktop
+137,M,Chicago,Mobile
+138,M,Phoenix,Mobile
+139,F,San Diego,Desktop
+140,F,Dallas,Mobile
+141,M,San Diego,Desktop
+142,Unknown,Houston,Mobile
+143,F,San Diego,Desktop
+144,F,New York,Desktop
+145,F,Chicago,Mobile
+146,F,Houston,Desktop
+147,M,Chicago,Mobile
+148,M,Dallas,Desktop
+149,M,Houston,Mobile
+150,F,Phoenix,Mobile
+151,F,Houston,Desktop
+152,F,San Antonio,Desktop
+153,M,Phoenix,Mobile
+154,M,San Jose,Mobile
+155,F,Los Angeles,Tablet
+156,F,San Jose,Desktop
+157,M,San Antonio,Mobile
+158,M,Dallas,Desktop
+159,F,Phoenix,Mobile
+160,M,San Diego,Mobile
+161,M,Houston,Mobile
+162,F,Houston,Mobile
+163,F,Chicago,Desktop
+164,F,San Jose,Tablet
+165,M,Chicago,Mobile
+166,M,San Jose,Desktop
+167,F,Dallas,Desktop
+168,F,Dallas,Mobile
+169,M,San Diego,Mobile
+170,M,San Jose,Mobile
+171,Unknown,Phoenix,Mobile
+172,F,Phoenix,Mobile
+173,F,Dallas,Mobile
+174,F,New York,Desktop
+175,F,San Antonio,Mobile
+176,M,San Diego,Mobile
+177,M,Phoenix,Mobile
+178,M,San Jose,Mobile
+179,M,Phoenix,Tablet
+180,Unknown,Philadelphia,Mobile
+181,M,Phoenix,Desktop
+182,F,Chicago,Desktop
+183,F,Phoenix,Desktop
+184,M,San Diego,Desktop
+185,F,Phoenix,Mobile
+186,M,New York,Mobile
+187,Unknown,Phoenix,Desktop
+188,M,New York,Desktop
+189,M,Chicago,Mobile
+190,M,San Antonio,Desktop
+191,F,Phoenix,Tablet
+192,F,Phoenix,Desktop
+193,F,Chicago,Mobile
+194,M,New York,Tablet
+195,F,New York,Desktop
+196,F,San Diego,Mobile
+197,F,Philadelphia,Desktop
+198,F,New York,Mobile
+199,F,Dallas,Mobile
+200,F,San Antonio,Desktop
+201,F,Los Angeles,Desktop
+202,F,Los Angeles,Mobile
+203,F,Chicago,Tablet
+204,M,Philadelphia,Mobile
+205,F,San Antonio,Mobile
+206,F,Houston,Mobile
+207,F,New York,Mobile
+208,M,Los Angeles,Desktop
+209,M,Chicago,Mobile
+210,M,Philadelphia,Desktop
+211,M,Houston,Mobile
+212,F,Chicago,Mobile
+213,Unknown,San Jose,Mobile
+214,F,Los Angeles,Mobile
+215,M,Phoenix,Mobile
+216,F,San Jose,Desktop
+217,M,San Jose,Desktop
+218,M,Dallas,Mobile
+219,F,San Diego,Desktop
+220,F,New York,Mobile
+221,F,New York,Mobile
+222,Unknown,San Diego,Mobile
+223,F,San Antonio,Mobile
+224,F,San Jose,Mobile
+225,M,San Antonio,Desktop
+226,F,Los Angeles,Mobile
+227,F,Dallas,Desktop
+228,M,San Antonio,Mobile
+229,M,San Jose,Mobile
+230,M,Houston,Mobile
+231,M,Dallas,Mobile
+232,M,Philadelphia,Mobile
+233,F,New York,Mobile
+234,M,Phoenix,Mobile
+235,F,Los Angeles,Mobile
+236,F,Philadelphia,Desktop
+237,M,Philadelphia,Mobile
+238,M,Houston,Desktop
+239,M,San Diego,Desktop
+240,M,Chicago,Mobile
+241,F,San Diego,Mobile
+242,M,Houston,Mobile
+243,Unknown,San Diego,Desktop
+244,F,Los Angeles,Mobile
+245,F,Chicago,Desktop
+246,M,San Jose,Mobile
+247,M,New York,Desktop
+248,F,New York,Desktop
+249,M,Phoenix,Mobile
+250,F,Chicago,Mobile
+251,M,San Jose,Mobile
+252,F,Los Angeles,Mobile
+253,F,New York,Mobile
+254,M,Dallas,Mobile
+255,M,San Antonio,Desktop
+256,M,Phoenix,Desktop
+257,Unknown,Phoenix,Desktop
+258,F,Chicago,Mobile
+259,F,Philadelphia,Mobile
+260,F,Dallas,Desktop
+261,F,Chicago,Mobile
+262,F,San Jose,Tablet
+263,M,San Jose,Mobile
+264,F,San Antonio,Desktop
+265,F,Philadelphia,Mobile
+266,M,New York,Mobile
+267,F,San Antonio,Mobile
+268,M,San Diego,Desktop
+269,M,Philadelphia,Mobile
+270,F,San Jose,Mobile
+271,F,New York,Mobile
+272,F,Houston,Tablet
+273,F,Phoenix,Desktop
+274,M,Houston,Mobile
+275,F,San Jose,Mobile
+276,F,Houston,Mobile
+277,F,San Diego,Mobile
+278,M,Los Angeles,Mobile
+279,F,Houston,Mobile
+280,M,Phoenix,Desktop
+281,F,San Diego,Mobile
+282,M,San Jose,Tablet
+283,M,San Diego,Mobile
+284,F,San Diego,Desktop
+285,F,Houston,Tablet
+286,F,Phoenix,Desktop
+287,M,San Jose,Mobile
+288,M,San Diego,Desktop
+289,F,New York,Mobile
+290,Unknown,Houston,Mobile
+291,F,Philadelphia,Mobile
+292,F,Phoenix,Mobile
+293,F,San Jose,Desktop
+294,M,Dallas,Mobile
+295,M,San Jose,Tablet
+296,M,Los Angeles,Mobile
+297,F,Chicago,Mobile
+298,F,Houston,Mobile
+299,F,New York,Desktop
+300,M,San Jose,Mobile
+301,F,San Antonio,Tablet
+302,M,Houston,Mobile
+303,M,San Diego,Mobile
+304,F,San Antonio,Mobile
+305,F,New York,Mobile
+306,M,San Diego,Mobile
+307,M,Chicago,Mobile
+308,F,New York,Mobile
+309,F,Houston,Mobile
+310,F,San Antonio,Desktop
+311,M,Chicago,Desktop
+312,M,San Antonio,Tablet
+313,F,San Antonio,Desktop
+314,M,San Antonio,Mobile
+315,M,San Diego,Mobile
+316,F,Chicago,Desktop
+317,F,San Diego,Mobile
+318,M,San Diego,Desktop
+319,Unknown,Houston,Desktop
+320,M,San Antonio,Desktop
+321,M,San Antonio,Desktop
+322,F,Chicago,Mobile
+323,M,Los Angeles,Tablet
+324,F,San Jose,Desktop
+325,M,San Antonio,Mobile
+326,F,Philadelphia,Desktop
+327,M,Phoenix,Mobile
+328,F,Philadelphia,Desktop
+329,M,San Diego,Tablet
+330,M,New York,Mobile
+331,F,Dallas,Mobile
+332,F,San Antonio,Mobile
+333,F,Houston,Mobile
+334,F,Los Angeles,Mobile
+335,M,Los Angeles,Mobile
+336,F,Dallas,Mobile
+337,F,Dallas,Mobile
+338,F,Phoenix,Mobile
+339,M,Dallas,Mobile
+340,F,Los Angeles,Desktop
+341,F,San Antonio,Mobile
+342,F,Phoenix,Mobile
+343,F,Los Angeles,Mobile
+344,F,Chicago,Mobile
+345,F,Phoenix,Desktop
+346,M,Houston,Desktop
+347,M,Chicago,Tablet
+348,M,San Diego,Tablet
+349,F,New York,Mobile
+350,F,Chicago,Mobile
+351,M,Los Angeles,Desktop
+352,M,Dallas,Mobile
+353,F,Dallas,Desktop
+354,F,Dallas,Mobile
+355,F,Phoenix,Mobile
+356,Unknown,Philadelphia,Mobile
+357,M,New York,Mobile
+358,F,San Antonio,Mobile
+359,M,San Diego,Desktop
+360,F,New York,Desktop
+361,F,Philadelphia,Tablet
+362,F,San Jose,Mobile
+363,F,San Jose,Mobile
+364,Unknown,San Jose,Mobile
+365,F,Phoenix,Desktop
+366,M,San Diego,Tablet
+367,F,Los Angeles,Desktop
+368,M,Chicago,Mobile
+369,F,New York,Desktop
+370,M,Los Angeles,Desktop
+371,F,San Jose,Desktop
+372,M,San Diego,Mobile
+373,F,Dallas,Desktop
+374,F,San Jose,Desktop
+375,M,Chicago,Desktop
+376,M,San Antonio,Mobile
+377,M,Chicago,Mobile
+378,M,New York,Mobile
+379,M,Dallas,Mobile
+380,M,Dallas,Desktop
+381,M,San Antonio,Mobile
+382,F,New York,Mobile
+383,M,Los Angeles,Mobile
+384,M,Dallas,Mobile
+385,F,Dallas,Mobile
+386,M,Houston,Mobile
+387,F,Phoenix,Mobile
+388,M,San Diego,Desktop
+389,F,Los Angeles,Mobile
+390,Unknown,San Diego,Tablet
+391,F,Phoenix,Desktop
+392,M,Los Angeles,Mobile
+393,M,San Jose,Desktop
+394,M,Phoenix,Desktop
+395,M,Dallas,Tablet
+396,Unknown,San Jose,Mobile
+397,F,New York,Mobile
+398,F,Philadelphia,Desktop
+399,F,Dallas,Mobile
+400,F,Los Angeles,Mobile
+401,M,Dallas,Mobile
+402,F,San Jose,Desktop
+403,F,Phoenix,Desktop
+404,M,Philadelphia,Mobile
+405,F,San Jose,Mobile
+406,Unknown,Phoenix,Tablet
+407,M,Chicago,Desktop
+408,M,Los Angeles,Mobile
+409,F,New York,Desktop
+410,F,San Diego,Mobile
+411,M,Dallas,Mobile
+412,M,Phoenix,Desktop
+413,F,Philadelphia,Mobile
+414,F,San Jose,Mobile
+415,F,San Jose,Mobile
+416,M,San Antonio,Mobile
+417,F,San Antonio,Mobile
+418,M,New York,Mobile
+419,M,Los Angeles,Desktop
+420,F,Chicago,Mobile
+421,M,San Antonio,Mobile
+422,Unknown,Phoenix,Mobile
+423,F,Houston,Mobile
+424,M,New York,Desktop
+425,F,Philadelphia,Mobile
+426,F,Los Angeles,Desktop
+427,Unknown,Houston,Desktop
+428,F,San Antonio,Mobile
+429,F,Chicago,Mobile
+430,M,Los Angeles,Mobile
+431,Unknown,New York,Mobile
+432,F,San Antonio,Desktop
+433,M,Los Angeles,Desktop
+434,M,Chicago,Tablet
+435,M,Phoenix,Tablet
+436,F,Houston,Mobile
+437,M,Chicago,Mobile
+438,M,Philadelphia,Mobile
+439,M,New York,Desktop
+440,M,San Diego,Mobile
+441,M,Phoenix,Mobile
+442,M,Los Angeles,Desktop
+443,F,Phoenix,Tablet
+444,Unknown,Houston,Desktop
+445,F,San Antonio,Mobile
+446,F,Houston,Mobile
+447,M,Philadelphia,Mobile
+448,M,San Diego,Mobile
+449,Unknown,New York,Mobile
+450,M,Los Angeles,Mobile
+451,F,Dallas,Desktop
+452,F,San Diego,Desktop
+453,F,Dallas,Mobile
+454,Unknown,Philadelphia,Desktop
+455,F,San Jose,Desktop
+456,F,New York,Mobile
+457,M,New York,Desktop
+458,M,San Antonio,Mobile
+459,F,San Jose,Desktop
+460,M,San Antonio,Desktop
+461,F,Chicago,Desktop
+462,F,Dallas,Mobile
+463,F,Los Angeles,Tablet
+464,F,Houston,Mobile
+465,F,San Antonio,Desktop
+466,F,Philadelphia,Desktop
+467,M,Chicago,Mobile
+468,M,Los Angeles,Mobile
+469,M,Dallas,Desktop
+470,M,San Antonio,Mobile
+471,F,San Antonio,Mobile
+472,M,Los Angeles,Mobile
+473,F,Phoenix,Tablet
+474,Unknown,Chicago,Mobile
+475,M,Philadelphia,Mobile
+476,M,New York,Desktop
+477,F,San Diego,Mobile
+478,M,Houston,Mobile
+479,F,Chicago,Mobile
+480,M,Phoenix,Mobile
+481,F,Los Angeles,Desktop
+482,F,Chicago,Mobile
+483,F,Chicago,Desktop
+484,F,New York,Mobile
+485,F,San Antonio,Desktop
+486,M,Los Angeles,Mobile
+487,F,Dallas,Mobile
+488,F,San Diego,Mobile
+489,F,San Antonio,Mobile
+490,M,Dallas,Mobile
+491,F,Phoenix,Mobile
+492,F,San Diego,Mobile
+493,M,San Jose,Mobile
+494,M,San Jose,Mobile
+495,F,Dallas,Mobile
+496,M,New York,Mobile
+497,M,Dallas,Desktop
+498,M,Phoenix,Desktop
+499,F,San Diego,Mobile
+500,F,Houston,Mobile
+501,M,Phoenix,Tablet
+502,M,San Antonio,Mobile
+503,M,Phoenix,Mobile
+504,F,San Jose,Mobile
+505,M,Los Angeles,Mobile
+506,Unknown,San Antonio,Mobile
+507,F,Los Angeles,Mobile
+508,F,San Antonio,Mobile
+509,M,Los Angeles,Mobile
+510,F,Los Angeles,Mobile
+511,F,Philadelphia,Desktop
+512,M,Los Angeles,Desktop
+513,Unknown,San Jose,Mobile
+514,M,San Jose,Desktop
+515,F,San Diego,Desktop
+516,F,New York,Mobile
+517,F,Phoenix,Desktop
+518,F,Los Angeles,Tablet
+519,M,Dallas,Desktop
+520,Unknown,Dallas,Mobile
+521,M,Houston,Desktop
+522,F,Houston,Desktop
+523,F,Los Angeles,Desktop
+524,M,New York,Mobile
+525,F,Dallas,Mobile
+526,F,San Jose,Mobile
+527,F,Dallas,Mobile
+528,F,Chicago,Mobile
+529,M,Chicago,Mobile
+530,F,Los Angeles,Mobile
+531,M,San Jose,Tablet
+532,F,Phoenix,Desktop
+533,M,Phoenix,Mobile
+534,F,Houston,Desktop
+535,F,Philadelphia,Desktop
+536,F,Phoenix,Mobile
+537,M,Phoenix,Desktop
+538,M,Chicago,Mobile
+539,F,Philadelphia,Mobile
+540,M,Houston,Mobile
+541,M,Chicago,Mobile
+542,M,Los Angeles,Mobile
+543,Unknown,San Jose,Mobile
+544,M,San Jose,Desktop
+545,M,San Diego,Desktop
+546,M,San Diego,Tablet
+547,F,San Antonio,Desktop
+548,M,San Jose,Mobile
+549,M,Philadelphia,Desktop
+550,F,Dallas,Desktop
+551,F,San Diego,Mobile
+552,F,San Diego,Desktop
+553,F,Phoenix,Mobile
+554,F,Houston,Mobile
+555,F,Los Angeles,Desktop
+556,M,San Antonio,Mobile
+557,M,Chicago,Desktop
+558,M,Phoenix,Mobile
+559,M,Chicago,Desktop
+560,F,San Jose,Mobile
+561,F,Dallas,Mobile
+562,Unknown,Chicago,Mobile
+563,F,San Jose,Mobile
+564,F,New York,Mobile
+565,M,Chicago,Desktop
+566,M,San Antonio,Desktop
+567,M,Phoenix,Desktop
+568,M,San Diego,Mobile
+569,M,San Antonio,Mobile
+570,F,Los Angeles,Desktop
+571,M,Phoenix,Mobile
+572,F,Chicago,Mobile
+573,M,Chicago,Mobile
+574,M,Los Angeles,Mobile
+575,Unknown,San Antonio,Mobile
+576,M,San Jose,Tablet
+577,M,Dallas,Mobile
+578,M,Dallas,Desktop
+579,M,San Diego,Desktop
+580,F,San Antonio,Mobile
+581,M,Phoenix,Desktop
+582,F,New York,Desktop
+583,F,Philadelphia,Mobile
+584,F,New York,Desktop
+585,F,Houston,Desktop
+586,M,New York,Mobile
+587,M,Dallas,Mobile
+588,F,Dallas,Mobile
+589,F,San Antonio,Tablet
+590,F,Philadelphia,Tablet
+591,F,Philadelphia,Mobile
+592,M,New York,Mobile
+593,F,Chicago,Desktop
+594,F,Philadelphia,Mobile
+595,M,Dallas,Mobile
+596,M,Los Angeles,Mobile
+597,F,Los Angeles,Desktop
+598,F,Dallas,Mobile
+599,M,New York,Desktop
+600,F,Houston,Mobile
+601,M,Dallas,Desktop
+602,M,Phoenix,Mobile
+603,M,Houston,Mobile
+604,F,Houston,Mobile
+605,M,Philadelphia,Mobile
+606,M,Los Angeles,Desktop
+607,M,Chicago,Mobile
+608,M,Dallas,Mobile
+609,Unknown,San Diego,Mobile
+610,M,Dallas,Mobile
+611,M,Chicago,Mobile
+612,F,New York,Mobile
+613,Unknown,New York,Mobile
+614,M,Houston,Desktop
+615,F,Los Angeles,Mobile
+616,F,Chicago,Mobile
+617,M,San Antonio,Desktop
+618,F,San Antonio,Mobile
+619,F,Philadelphia,Desktop
+620,F,San Antonio,Mobile
+621,F,New York,Mobile
+622,F,Phoenix,Mobile
+623,M,Houston,Mobile
+624,M,Phoenix,Desktop
+625,M,San Jose,Mobile
+626,F,Los Angeles,Mobile
+627,M,Houston,Desktop
+628,M,San Jose,Desktop
+629,F,New York,Desktop
+630,F,Los Angeles,Mobile
+631,M,San Jose,Tablet
+632,M,San Diego,Mobile
+633,F,Los Angeles,Mobile
+634,M,New York,Desktop
+635,M,San Diego,Desktop
+636,M,New York,Mobile
+637,M,San Diego,Mobile
+638,F,Chicago,Mobile
+639,M,Phoenix,Mobile
+640,M,Houston,Mobile
+641,F,San Antonio,Desktop
+642,M,San Jose,Mobile
+643,F,San Diego,Mobile
+644,M,New York,Mobile
+645,F,Dallas,Tablet
+646,F,Chicago,Mobile
+647,F,Dallas,Desktop
+648,F,Los Angeles,Mobile
+649,M,San Diego,Mobile
+650,F,Los Angeles,Mobile
+651,M,San Diego,Mobile
+652,M,San Diego,Mobile
+653,M,Dallas,Mobile
+654,M,Houston,Mobile
+655,M,New York,Desktop
+656,M,San Antonio,Desktop
+657,M,Los Angeles,Desktop
+658,M,San Diego,Desktop
+659,F,San Antonio,Desktop
+660,M,Philadelphia,Desktop
+661,M,Los Angeles,Mobile
+662,F,Houston,Desktop
+663,M,Chicago,Mobile
+664,M,Philadelphia,Mobile
+665,F,San Diego,Desktop
+666,M,San Antonio,Desktop
+667,F,Dallas,Desktop
+668,M,San Jose,Mobile
+669,F,Phoenix,Desktop
+670,M,Chicago,Mobile
+671,F,Dallas,Mobile
+672,F,San Antonio,Desktop
+673,F,Dallas,Mobile
+674,M,San Jose,Desktop
+675,F,Dallas,Tablet
+676,M,Chicago,Desktop
+677,M,Chicago,Tablet
+678,M,Houston,Desktop
+679,F,Chicago,Mobile
+680,F,Philadelphia,Desktop
+681,M,Philadelphia,Mobile
+682,M,Houston,Mobile
+683,F,Chicago,Mobile
+684,F,San Antonio,Desktop
+685,M,San Diego,Desktop
+686,F,Chicago,Mobile
+687,M,Philadelphia,Desktop
+688,F,San Jose,Desktop
+689,F,Chicago,Mobile
+690,M,San Antonio,Desktop
+691,M,Houston,Mobile
+692,F,Dallas,Tablet
+693,F,New York,Desktop
+694,F,Philadelphia,Tablet
+695,F,San Antonio,Mobile
+696,F,Dallas,Mobile
+697,Unknown,Chicago,Mobile
+698,M,Philadelphia,Mobile
+699,F,Chicago,Tablet
+700,M,San Jose,Desktop
+701,F,Phoenix,Mobile
+702,M,Phoenix,Desktop
+703,F,San Antonio,Tablet
+704,F,San Diego,Desktop
+705,F,Philadelphia,Mobile
+706,M,Dallas,Desktop
+707,F,Houston,Mobile
+708,M,San Jose,Mobile
+709,M,Chicago,Mobile
+710,F,San Jose,Mobile
+711,F,San Jose,Desktop
+712,M,Dallas,Mobile
+713,M,Houston,Desktop
+714,F,Phoenix,Mobile
+715,M,San Antonio,Mobile
+716,M,San Diego,Mobile
+717,M,San Antonio,Mobile
+718,F,San Diego,Mobile
+719,F,San Jose,Tablet
+720,M,San Antonio,Mobile
+721,F,Chicago,Mobile
+722,F,Dallas,Mobile
+723,M,Phoenix,Mobile
+724,M,San Antonio,Desktop
+725,F,San Diego,Mobile
+726,F,San Jose,Mobile
+727,F,New York,Mobile
+728,M,Philadelphia,Desktop
+729,M,Phoenix,Tablet
+730,F,Los Angeles,Mobile
+731,F,Chicago,Desktop
+732,F,San Diego,Desktop
+733,M,San Jose,Tablet
+734,F,New York,Mobile
+735,M,Houston,Mobile
+736,F,Houston,Mobile
+737,M,Phoenix,Desktop
+738,M,Dallas,Mobile
+739,F,New York,Mobile
+740,M,Chicago,Tablet
+741,F,Houston,Desktop
+742,M,San Antonio,Desktop
+743,M,Chicago,Mobile
+744,M,San Jose,Mobile
+745,M,Dallas,Mobile
+746,F,San Antonio,Desktop
+747,M,San Diego,Mobile
+748,M,Philadelphia,Desktop
+749,M,Chicago,Mobile
+750,F,San Diego,Mobile
+751,F,San Antonio,Mobile
+752,F,Phoenix,Mobile
+753,F,Philadelphia,Desktop
+754,M,San Antonio,Tablet
+755,M,San Antonio,Mobile
+756,F,Los Angeles,Mobile
+757,F,San Antonio,Mobile
+758,F,Chicago,Mobile
+759,F,Los Angeles,Mobile
+760,M,Chicago,Mobile
+761,F,Houston,Tablet
+762,M,Dallas,Mobile
+763,F,Dallas,Mobile
+764,F,Chicago,Desktop
+765,F,Phoenix,Mobile
+766,M,New York,Mobile
+767,M,Dallas,Desktop
+768,M,Dallas,Mobile
+769,F,New York,Desktop
+770,M,Chicago,Mobile
+771,F,Los Angeles,Mobile
+772,F,San Antonio,Mobile
+773,F,New York,Desktop
+774,M,Chicago,Desktop
+775,F,Philadelphia,Mobile
+776,M,Dallas,Mobile
+777,F,Houston,Desktop
+778,F,Chicago,Mobile
+779,F,Chicago,Tablet
+780,F,San Antonio,Mobile
+781,M,Philadelphia,Mobile
+782,M,Chicago,Mobile
+783,F,Houston,Mobile
+784,M,San Jose,Tablet
+785,M,Dallas,Mobile
+786,F,San Jose,Desktop
+787,F,San Antonio,Desktop
+788,F,San Antonio,Mobile
+789,F,Houston,Mobile
+790,F,Houston,Mobile
+791,M,New York,Mobile
+792,M,Phoenix,Mobile
+793,M,Dallas,Mobile
+794,F,San Diego,Desktop
+795,M,Philadelphia,Desktop
+796,M,San Antonio,Mobile
+797,F,Chicago,Mobile
+798,F,Phoenix,Mobile
+799,M,Houston,Mobile
+800,F,Phoenix,Mobile
+801,F,Houston,Desktop
+802,M,New York,Mobile
+803,F,San Diego,Mobile
+804,M,Dallas,Mobile
+805,M,Philadelphia,Desktop
+806,F,Houston,Desktop
+807,F,San Antonio,Mobile
+808,M,Philadelphia,Desktop
+809,Unknown,Los Angeles,Mobile
+810,M,Dallas,Mobile
+811,F,Philadelphia,Desktop
+812,M,Philadelphia,Mobile
+813,M,San Jose,Tablet
+814,M,New York,Desktop
+815,M,Houston,Mobile
+816,F,Philadelphia,Desktop
+817,M,San Diego,Mobile
+818,M,San Jose,Mobile
+819,M,San Jose,Mobile
+820,F,Dallas,Desktop
+821,M,New York,Mobile
+822,M,San Antonio,Mobile
+823,M,Chicago,Mobile
+824,F,New York,Mobile
+825,F,San Diego,Tablet
+826,F,New York,Desktop
+827,F,San Jose,Desktop
+828,F,San Antonio,Desktop
+829,F,New York,Desktop
+830,F,Los Angeles,Desktop
+831,F,Houston,Mobile
+832,M,San Diego,Desktop
+833,M,San Jose,Mobile
+834,F,Los Angeles,Desktop
+835,F,Los Angeles,Desktop
+836,F,Los Angeles,Mobile
+837,M,San Antonio,Desktop
+838,F,Phoenix,Tablet
+839,M,San Diego,Desktop
+840,F,Chicago,Mobile
+841,M,San Jose,Tablet
+842,F,Dallas,Desktop
+843,F,Phoenix,Desktop
+844,M,Chicago,Mobile
+845,F,Philadelphia,Desktop
+846,M,Los Angeles,Mobile
+847,M,Dallas,Mobile
+848,M,San Jose,Mobile
+849,M,New York,Mobile
+850,F,Phoenix,Desktop
+851,M,New York,Mobile
+852,M,San Jose,Desktop
+853,F,New York,Mobile
+854,F,San Diego,Mobile
+855,M,Philadelphia,Mobile
+856,F,Los Angeles,Mobile
+857,M,Chicago,Tablet
+858,M,Philadelphia,Tablet
+859,M,Chicago,Mobile
+860,F,Phoenix,Mobile
+861,F,Phoenix,Tablet
+862,M,San Antonio,Mobile
+863,Unknown,Dallas,Tablet
+864,M,Houston,Mobile
+865,Unknown,Philadelphia,Mobile
+866,M,New York,Mobile
+867,M,Phoenix,Desktop
+868,M,San Jose,Desktop
+869,F,San Jose,Mobile
+870,M,Phoenix,Tablet
+871,F,Chicago,Mobile
+872,F,Chicago,Mobile
+873,F,Houston,Mobile
+874,Unknown,Los Angeles,Desktop
+875,F,San Jose,Mobile
+876,F,San Diego,Mobile
+877,M,Houston,Tablet
+878,M,Phoenix,Mobile
+879,M,Philadelphia,Mobile
+880,F,Phoenix,Desktop
+881,M,San Jose,Tablet
+882,M,Chicago,Mobile
+883,M,Houston,Desktop
+884,F,San Jose,Mobile
+885,F,San Diego,Mobile
+886,F,Dallas,Mobile
+887,F,Phoenix,Tablet
+888,M,Chicago,Desktop
+889,F,San Antonio,Tablet
+890,M,Dallas,Mobile
+891,M,New York,Desktop
+892,F,Chicago,Mobile
+893,M,Phoenix,Mobile
+894,F,San Antonio,Mobile
+895,M,Philadelphia,Desktop
+896,F,San Jose,Desktop
+897,F,Los Angeles,Mobile
+898,F,Dallas,Desktop
+899,Unknown,Los Angeles,Desktop
+900,F,San Antonio,Mobile
+901,M,Houston,Desktop
+902,F,Phoenix,Mobile
+903,F,Dallas,Desktop
+904,F,Los Angeles,Mobile
+905,M,Los Angeles,Mobile
+906,M,Philadelphia,Mobile
+907,F,Los Angeles,Mobile
+908,M,Philadelphia,Mobile
+909,M,San Antonio,Desktop
+910,M,Philadelphia,Mobile
+911,M,San Diego,Mobile
+912,M,San Antonio,Mobile
+913,M,San Diego,Mobile
+914,F,San Antonio,Mobile
+915,M,Dallas,Mobile
+916,M,Chicago,Mobile
+917,F,Philadelphia,Mobile
+918,F,San Jose,Mobile
+919,F,Houston,Desktop
+920,F,Los Angeles,Desktop
+921,F,San Diego,Mobile
+922,F,Houston,Mobile
+923,F,Los Angeles,Mobile
+924,M,Los Angeles,Mobile
+925,F,Dallas,Desktop
+926,M,New York,Mobile
+927,M,Philadelphia,Desktop
+928,M,Los Angeles,Mobile
+929,M,Dallas,Mobile
+930,F,Dallas,Mobile
+931,M,Los Angeles,Mobile
+932,F,Chicago,Mobile
+933,F,San Diego,Tablet
+934,M,San Jose,Mobile
+935,F,Dallas,Desktop
+936,M,San Antonio,Mobile
+937,F,Phoenix,Tablet
+938,F,New York,Desktop
+939,F,Dallas,Mobile
+940,F,Phoenix,Mobile
+941,M,San Antonio,Mobile
+942,M,Los Angeles,Desktop
+943,F,Dallas,Mobile
+944,F,Los Angeles,Mobile
+945,M,Los Angeles,Mobile
+946,F,Philadelphia,Desktop
+947,M,San Antonio,Desktop
+948,M,San Diego,Tablet
+949,M,Chicago,Mobile
+950,F,Phoenix,Desktop
+951,M,New York,Desktop
+952,M,Chicago,Desktop
+953,F,Philadelphia,Mobile
+954,M,Phoenix,Desktop
+955,M,Philadelphia,Mobile
+956,M,Houston,Tablet
+957,M,Chicago,Mobile
+958,F,Philadelphia,Mobile
+959,F,Dallas,Tablet
+960,F,Philadelphia,Desktop
+961,M,New York,Mobile
+962,Unknown,Philadelphia,Mobile
+963,F,Dallas,Mobile
+964,M,Phoenix,Mobile
+965,F,San Antonio,Mobile
+966,M,Phoenix,Desktop
+967,Unknown,Chicago,Mobile
+968,F,New York,Desktop
+969,M,Philadelphia,Mobile
+970,F,Dallas,Tablet
+971,F,San Antonio,Desktop
+972,F,San Diego,Tablet
+973,F,Houston,Mobile
+974,Unknown,Philadelphia,Mobile
+975,M,San Antonio,Mobile
+976,F,San Jose,Mobile
+977,M,Phoenix,Mobile
+978,F,New York,Mobile
+979,F,San Diego,Desktop
+980,F,Dallas,Desktop
+981,F,Los Angeles,Mobile
+982,F,San Diego,Mobile
+983,F,Los Angeles,Mobile
+984,F,Phoenix,Tablet
+985,F,Philadelphia,Desktop
+986,F,Chicago,Mobile
+987,M,New York,Mobile
+988,Unknown,Los Angeles,Desktop
+989,M,Philadelphia,Mobile
+990,F,San Diego,Desktop
+991,Unknown,Dallas,Mobile
+992,M,Los Angeles,Mobile
+993,M,Philadelphia,Mobile
+994,M,Chicago,Desktop
+995,M,New York,Tablet
+996,F,Los Angeles,Tablet
+997,M,San Jose,Mobile
+998,F,New York,Mobile
+999,F,Houston,Mobile
+1000,F,Philadelphia,Desktop

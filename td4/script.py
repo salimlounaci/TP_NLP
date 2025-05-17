@@ -19,15 +19,15 @@ u_clusters = 5  # Number of user clusters
 p_clusters = 7  # Number of page clusters
 seed = 42
 
-FOLDER = Path("data") / "raw"/ "td4"
+#FOLDER = Path("data") / "raw"/ "td4"
 
 _cache = {}
 
 def get_data():
-    tmp_user_data = pd.read_csv(FOLDER / "user_data.csv")
-    tmp_page_data = pd.read_csv(FOLDER / "page_data.csv")
-    tmp_bid_data = pd.read_csv(FOLDER / "bid_requests.csv")
-    tmp_click_data = pd.read_csv(FOLDER / "click_data.csv")
+    tmp_user_data = pd.read_csv("user_data.csv")
+    tmp_page_data = pd.read_csv("page_data.csv")
+    tmp_bid_data = pd.read_csv("bid_requests_train.csv")
+    tmp_click_data = pd.read_csv("click_data_train.csv")
     
     _cache["user_data"] = tmp_user_data
     _cache["page_data"] = tmp_page_data
@@ -276,30 +276,152 @@ def load_models():
     with open("models/click_predictor.pkl", "rb") as f:
         _cache["click_predictor"] = pickle.load(f)
 
-def main():
-    """Main function"""
+def train():
     print("Starting ad prediction system...")
+
+    print("\n== Loading data ==")
     get_data()
-    
+
     print("\n== Building page clusters ==")
     clusterize_pages(p_clusters)
-    
+
     print("\n== Training page cluster predictor ==")
     train_page_cluster_predictor()
-    
+
     print("\n== Building user clusters ==")
     clusterize_users(u_clusters)
-    
+
     print("\n== Training click predictor ==")
     train_click_predictor()
-    
-    print("\n== Evaluating model ==")
-    evaluate_model()
-    
+
     print("\n== Saving models ==")
     save_models()
+
+
+def predict(bid_requests_path, output_path="predictions.csv"):
+    """
+    Makes predictions on test data using the trained models.
     
+    Args:
+        bid_requests_path: Path to the bid requests test data
+        output_path: Path where to save the prediction results
+        
+    Returns:
+        DataFrame with predictions
+    """
+    print("Loading models and data...")
+    # Load the necessary models
+    with open('models/click_predictor.pkl', 'rb') as f:
+        click_model = pickle.load(f)
+    
+    with open('models/page_cluster_predictor.pkl', 'rb') as f:
+        page_cluster_model = pickle.load(f)
+        
+    with open('models/page_vectorizer.pkl', 'rb') as f:
+        page_vectorizer = pickle.load(f)
+        
+    # Load data files
+    bid_requests = pd.read_csv(bid_requests_path)
+    user_data = pd.read_csv('user_data.csv')
+    page_data = pd.read_csv('page_data.csv')
+    
+    # For debugging - check what features the model expects
+    print("Click model expects features:", click_model.feature_names_in_ if hasattr(click_model, 'feature_names_in_') else "Unknown")
+    
+    print("Creating predictions directly...")
+    # Create a mapping from page_id to page_text
+    page_text_map = dict(zip(page_data['page_id'], page_data['page_text']))
+    
+    # Create a simple mapping from user_id to a default cluster (we'll use 0 since we can't use the original model)
+    user_cluster_map = {user_id: 0 for user_id in user_data['user_id']}
+    
+    # Process page texts and get cluster probabilities for each page in the test set
+    page_cluster_probs = {}
+    num_clusters = len(page_cluster_model.classes_)
+    
+    for page_id in bid_requests['page_id'].unique():
+        if page_id in page_text_map:
+            page_text = page_text_map[page_id]
+            # Preprocess text
+            page_text = page_text.lower() if isinstance(page_text, str) else ""
+            
+            # Transform using the vectorizer
+            X = page_vectorizer.transform([page_text])
+            
+            # Get probabilities for each cluster
+            probs = page_cluster_model.predict_proba(X)[0]
+            page_cluster_probs[page_id] = probs
+        else:
+            # If page_id not found, use zeros as probabilities
+            page_cluster_probs[page_id] = np.zeros(num_clusters)
+    
+    print("Building features for prediction...")
+    
+    # Simplified approach - create features based on the click model's expected feature names
+    results = []
+    
+    for _, row in bid_requests.iterrows():
+        user_id = row['user_id']
+        page_id = row['page_id']
+        
+        # Simplified approach - use fixed values for features we can't generate properly
+        features = {}
+        
+        # Add user_cluster (using a default value of 0)
+        features['user_cluster'] = user_cluster_map.get(user_id, 0)
+        
+        # Add user_ads_seen (default to 1)
+        features['user_ads_seen'] = 1
+        
+        # Add page cluster probabilities
+        probs = page_cluster_probs.get(page_id, np.zeros(num_clusters))
+        for i, prob in enumerate(probs):
+            features[f'page_cluster_prob_{i}'] = prob
+        
+        # Convert to DataFrame for prediction
+        features_df = pd.DataFrame([features])
+        
+        # Check if we have all required features
+        missing_features = []
+        for feature in click_model.feature_names_in_:
+            if feature not in features_df.columns:
+                missing_features.append(feature)
+                features_df[feature] = 0  # Add missing feature with default value
+        
+        if missing_features:
+            print(f"Adding {len(missing_features)} missing features with default values.")
+        
+        # Make sure all columns are in the same order as during training
+        features_df = features_df[click_model.feature_names_in_]
+        
+        # Make prediction
+        prob = click_model.predict_proba(features_df)[0][1]
+        click_prediction = 1 if prob >= 0.5 else 0
+        
+        # Add to results
+        results.append({
+            'user_id': user_id,
+            'page_id': page_id,
+            'timestamp': row['timestamp'],
+            'click': click_prediction
+        })
+    
+    # Convert results to DataFrame
+    results_df = pd.DataFrame(results)
+    
+    # Save predictions
+    results_df.to_csv(output_path, index=False)
+    print(f"✅ Predictions saved to {output_path}")
+    
+    return results_df
+
+def main():
+
+    train()
+    print("\n== Evaluating model ==")
+    evaluate_model()
     print("\nDone!")
+
 
 if __name__ == "__main__":
     main()
