@@ -24,10 +24,10 @@ seed = 42
 _cache = {}
 
 def get_data():
-    tmp_user_data = pd.read_csv("user_data.csv")
-    tmp_page_data = pd.read_csv("page_data.csv")
-    tmp_bid_data = pd.read_csv("bid_requests_train.csv")
-    tmp_click_data = pd.read_csv("click_data_train.csv")
+    tmp_user_data = pd.read_csv("./data/user_data.csv")
+    tmp_page_data = pd.read_csv("./data/page_data.csv")
+    tmp_bid_data = pd.read_csv("./data/bid_requests_train.csv")
+    tmp_click_data = pd.read_csv("./data/click_data_train.csv")
     
     _cache["user_data"] = tmp_user_data
     _cache["page_data"] = tmp_page_data
@@ -322,8 +322,8 @@ def predict(bid_requests_path, output_path="predictions.csv"):
         
     # Load data files
     bid_requests = pd.read_csv(bid_requests_path)
-    user_data = pd.read_csv('user_data.csv')
-    page_data = pd.read_csv('page_data.csv')
+    user_data = pd.read_csv('./data/user_data.csv')
+    page_data = pd.read_csv('./data/page_data.csv')
     
     # For debugging - check what features the model expects
     print("Click model expects features:", click_model.feature_names_in_ if hasattr(click_model, 'feature_names_in_') else "Unknown")
