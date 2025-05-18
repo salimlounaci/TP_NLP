@@ -3,13 +3,15 @@ import numpy as np
 from sklearn.cluster import KMeans
 import pickle
 import os
+from modules.config import Config
 
 
 class UserClusterer:
-    def __init__(self, data_loader, n_clusters=5, seed=42):
+    def __init__(self, data_loader, config_path=None):
         self.data_loader = data_loader
-        self.n_clusters = n_clusters
-        self.seed = seed
+        self.config = Config(config_path)
+        self.n_clusters = self.config.get_param("model_params", "user_clusters")
+        self.seed = self.config.get_param("model_params", "seed")
         self._cache = {}
 
     def process_user_data(self):
@@ -58,13 +60,13 @@ class UserClusterer:
 
     def save_models(self):
         """Sauvegarde le modèle de clustering"""
-        if not os.path.exists("models"):
-            os.makedirs("models")
+        models_dir = self.config.config["paths"]["models_dir"]
+        os.makedirs(models_dir, exist_ok=True)
 
-        with open("models/user_cluster_model.pkl", "wb") as f:
+        with open(self.config.get_model_path("user_cluster_model"), "wb") as f:
             pickle.dump(self._cache["user_cluster_model"], f)
 
     def load_models(self):
         """Charge le modèle sauvegardé"""
-        with open("models/user_cluster_model.pkl", "rb") as f:
+        with open(self.config.get_model_path("user_cluster_model"), "rb") as f:
             self._cache["user_cluster_model"] = pickle.load(f)
