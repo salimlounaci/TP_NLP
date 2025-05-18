@@ -28,7 +28,29 @@ class FeatureBuilder:
 
             # Calcul des annonces vues par jour
             click_data = click_data.copy()
-            click_data["date"] = click_data["timestamp"].apply(lambda txt: str(txt)[:10])
+            try:
+                # Utiliser pandas to_datetime pour gérer tous les formats de date
+                click_data["date"] = pd.to_datetime(click_data["timestamp"]).dt.date
+            except Exception as e:
+                # En cas d'échec, utiliser une méthode de secours
+                print(f"Erreur lors de la conversion de date: {e}")
+                import re
+
+                def extract_date(timestamp):
+                    # Format YYYY-MM-DD
+                    match = re.search(r'(\d{4}-\d{2}-\d{2})', str(timestamp))
+                    if match:
+                        return match.group(1)
+
+                    # Format MM/DD/YYYY ou DD/MM/YYYY
+                    match = re.search(r'(\d{1,2}/\d{1,2}/\d{4})', str(timestamp))
+                    if match:
+                        return match.group(1)
+
+                    # Si aucun format reconnu, retourner une chaîne par défaut
+                    return "unknown_date"
+
+                click_data["date"] = click_data["timestamp"].apply(extract_date)
             click_data["count"] = 1
             click_data["user_ads_seen"] = (
                 click_data.groupby(["user_id", "date"])["count"]
