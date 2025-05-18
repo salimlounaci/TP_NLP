@@ -22,7 +22,6 @@ class DataLoader:
 
         # Récupération des chemins depuis la configuration
         user_data_path = self.config.get_data_path("user_data")
-        print(user_data_path)
         page_data_path = self.config.get_data_path("page_data")
         bid_data_path = self.config.get_data_path("bid_data_train")
         click_data_path = self.config.get_data_path("click_data_train")
@@ -34,7 +33,6 @@ class DataLoader:
             tmp_page_data = pd.read_csv(page_data_path)
             tmp_bid_data = pd.read_csv(bid_data_path)
             tmp_click_data = pd.read_csv(click_data_path)
-            print(tmp_click_data)
         except FileNotFoundError as e:
             print(f"Error loading data: {e}")
             print("Trying to find data files automatically...")

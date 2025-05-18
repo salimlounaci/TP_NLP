@@ -6,7 +6,6 @@ import sys
 import pickle
 from pathlib import Path
 
-# Ajouter le répertoire parent au chemin d'accès pour importer les modules
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from modules.data_loader import DataLoader
@@ -87,23 +86,19 @@ class TestFeatureBuilder(unittest.TestCase):
 
         bid_data_test.to_csv(data_dir / cls.config.get_param("files", "bid_data_test"), index=False)
 
+
     def test_click_features_user_ads_seen(self):
         """Test que la colonne user_ads_seen est correctement calculée"""
-        # Réinitialiser les caches pour s'assurer que les données sont recalculées
         self.feature_builder._cache = {}
         self.data_loader._cache = {}
 
-        # Charger les données
         click_features = self.feature_builder.build_click_features()
 
-        # Vérifier que la colonne existe
         self.assertIn('user_ads_seen', click_features.columns,
                       "La colonne 'user_ads_seen' n'existe pas dans les features")
 
-        # Récupérer les données brutes pour une vérification manuelle
         user_data, _, _, click_data = self.data_loader.get_data()
 
-        # Calculer manuellement user_ads_seen avec la méthode robuste
         click_data_test = click_data.copy()
         click_data_test["date"] = pd.to_datetime(click_data_test["timestamp"]).dt.date
         click_data_test["count"] = 1
@@ -120,7 +115,6 @@ class TestFeatureBuilder(unittest.TestCase):
         )
 
         # Vérifier que la feature calculée correspond à notre calcul manuel
-        # (en ignorant les valeurs null qui peuvent résulter de la fusion)
         valid_rows = joined.dropna(subset=['manual_ads_seen'])
 
         # Vérifier l'égalité élément par élément
@@ -193,7 +187,6 @@ class TestFeatureBuilder(unittest.TestCase):
 
     def test_user_ads_seen_calculation(self):
         """Test spécifique pour vérifier le calcul de user_ads_seen"""
-        # Créer des données avec plusieurs utilisateurs et dates
         click_data = pd.DataFrame({
             'user_id': [1, 1, 1, 1, 2, 2, 2],
             'page_id': [101, 102, 103, 104, 201, 202, 203],
@@ -206,7 +199,6 @@ class TestFeatureBuilder(unittest.TestCase):
             'clicked': [0, 1, 0, 1, 0, 1, 0]
         })
 
-        # Sauvegarder temporairement pour les tests
         data_dir = Path(self.config.get_param("paths", "data_dir"))
         temp_file = data_dir / "temp_click_data.csv"
         click_data.to_csv(temp_file, index=False)
@@ -215,23 +207,18 @@ class TestFeatureBuilder(unittest.TestCase):
             # Charger les données dans le data_loader
             self.data_loader._cache["click_data"] = click_data
 
-            # Méthode correcte: groupby par user_id ET date
             click_data_copy = click_data.copy()
             click_data_copy["date"] = pd.to_datetime(click_data_copy["timestamp"]).dt.date
             click_data_copy["count"] = 1
             user_ads_seen_correct = click_data_copy.groupby(["user_id", "date"])["count"].cumsum().tolist()
 
-            # Méthode incorrecte: groupby seulement par user_id
             user_ads_seen_incorrect = click_data_copy.groupby(["user_id"])["count"].cumsum().tolist()
 
-            # Vider le cache et recalculer
             self.feature_builder._cache = {}
             click_features = self.feature_builder.build_click_features()
 
-            # Trier les données pour comparer dans le même ordre
             click_features_sorted = click_features.sort_values(["user_id", "page_id"]).reset_index(drop=True)
 
-            # Extraire les valeurs
             calculated_values = click_features_sorted['user_ads_seen'].tolist()
 
             # Ces valeurs devraient être différentes

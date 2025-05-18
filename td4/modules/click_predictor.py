@@ -27,7 +27,6 @@ class ClickPredictor:
             print("ERROR: build_click_features() returned None - cannot train model")
             return None
 
-        print(click_features.head())
 
         # Séparation des features et de la cible
         X = click_features.drop(['user_id', 'page_id', 'ad_id', 'clicked'], axis=1)

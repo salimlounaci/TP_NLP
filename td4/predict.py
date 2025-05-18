@@ -74,12 +74,11 @@ def predict(config_path=None, bid_requests_path=None, output_path=None):
 if __name__ == "__main__":
     import argparse
 
-    # Configuration des arguments en ligne de commande
     parser = argparse.ArgumentParser(description='Make predictions with the trained model')
     parser.add_argument('--config', type=str, default='./config.yaml', help='Path to configuration file')
     parser.add_argument('--input', type=str, help='Path to bid requests test data')
     parser.add_argument('--output', type=str, help='Path to save predictions')
     args = parser.parse_args()
 
-    # Exécution de la prédiction
+
     predict(args.config, args.input, args.output)

@@ -57,7 +57,6 @@ def main(config_path=None):
 
 
 if __name__ == "__main__":
-    # Ajout d'arguments en ligne de commande pour spécifier un fichier de configuration
     parser = argparse.ArgumentParser(description='Train the ad prediction system')
     parser.add_argument('--config', type=str, default='config.yaml', help='Path to configuration file')
     args = parser.parse_args()
