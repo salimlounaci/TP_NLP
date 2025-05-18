@@ -23,7 +23,7 @@ class Config:
 
         self.default_config = {
             "paths": {
-                "data_dir": "./",
+                "data_dir": "./data/",
                 "models_dir": "./models/",
             },
             "model_params": {
@@ -39,6 +39,7 @@ class Config:
                 "bid_data_train": "bid_requests_train.csv",
                 "click_data_train": "click_data_train.csv",
                 "bid_data_test": "bid_requests_test.csv",
+                "output_data ": "prediction.csv",
             },
             "training": {
                 "test_split": 0.2,
