@@ -20,7 +20,7 @@ class Config:
         if self._initialized:
             return
 
-
+        # Définir la configuration par défaut
         self.default_config = {
             "paths": {
                 "data_dir": "./data/",
@@ -39,7 +39,7 @@ class Config:
                 "bid_data_train": "bid_requests_train.csv",
                 "click_data_train": "click_data_train.csv",
                 "bid_data_test": "bid_requests_test.csv",
-                "output_data ": "prediction.csv",
+                "output_data": "prediction.csv",
             },
             "training": {
                 "test_split": 0.2,
@@ -47,14 +47,33 @@ class Config:
             }
         }
 
-        self.config = self.default_config.copy()
+        # Initialiser config avec un dictionnaire vide
+        self.config = {}
+
+        # Charger d'abord le YAML si fourni
         if config_path:
-            self.load_config(config_path)
+            try:
+                with open(config_path, 'r') as file:
+                    self.config = yaml.safe_load(file)
+                    print(f"Configuration loaded from {config_path}")
+            except Exception as e:
+                print(f"Error loading configuration from {config_path}: {e}")
+                print("Using default configuration")
+                self.config = {}
+
+        # Compléter avec les valeurs par défaut pour les paramètres manquants
+        self._fill_missing_with_defaults(self.config, self.default_config)
 
         self._create_directories()
-
         self._initialized = True
 
+    def _fill_missing_with_defaults(self, config, defaults):
+        """Remplit les valeurs manquantes dans la configuration avec les valeurs par défaut"""
+        for key, value in defaults.items():
+            if key not in config:
+                config[key] = value
+            elif isinstance(value, dict) and isinstance(config[key], dict):
+                self._fill_missing_with_defaults(config[key], value)
     def load_config(self, config_path):
         """Charge la configuration depuis un fichier YAML"""
         try:

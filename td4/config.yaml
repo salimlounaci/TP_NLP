@@ -4,7 +4,6 @@ files:
   click_data_test: click_data_test.csv
   click_data_train: click_data_train.csv
   output_data: prediction.csv
-  'output_data ': prediction.csv
   page_data: page_data.csv
   user_data: user_data.csv
 model_params:

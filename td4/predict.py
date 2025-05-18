@@ -4,17 +4,13 @@ from modules.user_clustering import UserClusterer
 from modules.feature_builder import FeatureBuilder
 from modules.click_predictor import ClickPredictor
 from modules.config import Config
-import warnings
 import os
-import sys
 import pandas as pd
 
-warnings.filterwarnings('ignore')
 
-
-def predict(config_path=None, bid_requests_path=None, output_path="./data/prediction.csv"):
+def predict(config_path=None, bid_requests_path=None, output_path=None):
     """
-    Makes predictions on test data using the trained models, using the modular approach.
+    Makes predictions on test data using the trained models.
     """
     print("Starting prediction process...")
 
@@ -25,7 +21,7 @@ def predict(config_path=None, bid_requests_path=None, output_path="./data/predic
     data_dir = config.find_data_files()
     print(f"Using data directory: {data_dir}")
 
-    # Création du dossier data s'il n'existe pas
+    # Création du dossier data
     os.makedirs("./data", exist_ok=True)
 
     # Si les chemins ne sont pas spécifiés, utilisez la configuration
@@ -34,59 +30,31 @@ def predict(config_path=None, bid_requests_path=None, output_path="./data/predic
         bid_requests_path = os.path.join(data_dir, bid_data_test)
         print(f"Using test data from config: {bid_requests_path}")
 
-    # S'assurer que le chemin de sortie est dans le dossier data
-    output_path = "./data/prediction.csv"
+    # Si le chemin de sortie n'est pas spécifié, utilisez la configuration
+    if output_path is None:
+        output_file = config.config["files"]["output_data"]
+        output_path = os.path.join(data_dir, output_file)
     print(f"Output will be saved to: {output_path}")
 
     # Initialisation des composants
     data_loader = DataLoader(config_path)
-
-    # Récupérer les paramètres du modèle depuis la config
-    page_clusters = config.get_param("model_params", "page_clusters")
-    seed = config.get_param("model_params", "seed")
-    user_clusters = config.get_param("model_params", "user_clusters")
-
     page_clusterer = PageClusterer(data_loader, config_path)
     user_clusterer = UserClusterer(data_loader, config_path)
     feature_builder = FeatureBuilder(data_loader, page_clusterer, user_clusterer, config_path)
     click_predictor = ClickPredictor(feature_builder, config_path)
 
-    # Chargement des modèles
-    try:
-        print("Loading models...")
-        page_clusterer.load_models()
-        user_clusterer.load_models()
-        click_predictor.load_model()
-    except Exception as e:
-        print(f"Error loading models: {e}")
-        print("Training new models instead...")
-
-        # Entraînement des modèles si nécessaire
-        print("\n== Building page clusters ==")
-        page_clusterer.clusterize_pages()
-
-        print("\n== Training page cluster predictor ==")
-        page_clusterer.train_page_cluster_predictor()
-
-        print("\n== Building user clusters ==")
-        user_clusterer.clusterize_users()
-
-        print("\n== Training click predictor ==")
-        click_predictor.train()
-        # Sauvegarde des modèles
-        page_clusterer.save_models()
-        user_clusterer.save_models()
-        click_predictor.save_model()
+    # Chargement ou entraînement des modèles
+    print("Loading or training models...")
+    page_clusterer.clusterize_pages()
+    page_clusterer.train_page_cluster_predictor()
+    user_clusterer.clusterize_users()
+    click_predictor.train()
 
     print("Building features for prediction...")
     test_features = feature_builder.build_test_features(bid_requests_path)
 
-    if test_features is None:
-        print("ERROR: Failed to build test features")
-        return None
-
     print("Making predictions...")
-    click_predictions, probas = click_predictor.predict_batch(test_features)
+    click_predictions, _ = click_predictor.predict_batch(test_features)
 
     # Création du DataFrame de résultats
     results = pd.DataFrame({
@@ -96,29 +64,21 @@ def predict(config_path=None, bid_requests_path=None, output_path="./data/predic
         'click': click_predictions
     })
 
-    # Sauvegarde des prédictions dans le dossier data
+    # Sauvegarde des prédictions
     results.to_csv(output_path, index=False)
     print(f"✅ Predictions saved to {output_path}")
-
-    # Vérification que le fichier a bien été créé
-    if os.path.exists(output_path):
-        file_size = os.path.getsize(output_path)
-        print(f"Verified: File exists with size {file_size} bytes")
-    else:
-        print(f"WARNING: File was not created at {output_path}")
 
     return results
 
 
 if __name__ == "__main__":
-    import sys
     import argparse
 
     # Configuration des arguments en ligne de commande
     parser = argparse.ArgumentParser(description='Make predictions with the trained model')
-    parser.add_argument('--config', type=str, default='config.yaml', help='Path to configuration file')
+    parser.add_argument('--config', type=str, default='./config.yaml', help='Path to configuration file')
     parser.add_argument('--input', type=str, help='Path to bid requests test data')
-    parser.add_argument('--output', type=str, default='./data/prediction.csv', help='Path to save predictions')
+    parser.add_argument('--output', type=str, help='Path to save predictions')
     args = parser.parse_args()
 
     # Exécution de la prédiction
